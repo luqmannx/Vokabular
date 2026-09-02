@@ -3401,6 +3401,534 @@ body.light .practice-card:hover:not(.is-selected):not(.is-matched){
   }
 }
 </style>
+
+<style id="vokabular-final-mobile-only">
+/* =========================================================
+   FINAL PHONE-ONLY LAYOUT
+   Desktop styles above remain the original Vokabular design.
+   ========================================================= */
+.mobile-topic-close,.mobile-topic-pill{display:none;}
+
+@media (max-width:700px){
+  /* Global nav: compact and independent at the top-right. */
+  nav{
+    position:absolute!important;
+    top:0!important;left:0!important;right:0!important;
+    width:100%!important;
+    min-height:54px!important;
+    padding:9px 12px!important;
+    display:flex!important;
+    align-items:flex-start!important;
+    justify-content:space-between!important;
+    gap:10px!important;
+  }
+  .logo{flex:0 0 auto!important;font-size:17px!important;white-space:nowrap!important;}
+  .logo span{font-size:7.5px!important;letter-spacing:.12em!important;}
+  .nav-links{
+    flex:0 0 auto!important;min-width:0!important;max-width:calc(100% - 74px)!important;
+    display:flex!important;justify-content:flex-end!important;align-items:center!important;
+    gap:10px!important;margin-left:auto!important;padding-top:2px!important;
+    white-space:nowrap!important;overflow:visible!important;
+  }
+  .nav-links a{flex:0 0 auto!important;font-size:11px!important;white-space:nowrap!important;}
+
+  /* The desktop theme-toggle remains untouched; on phones it sits away from content. */
+  .theme-toggle{position:fixed!important;right:12px!important;bottom:14px!important;top:auto!important;z-index:120!important;padding:8px 11px!important;font-size:11px!important;}
+
+  /* Category pills: horizontal, centered and swipeable. */
+  .top-area{position:relative!important;top:auto!important;padding:8px 0!important;}
+  .level-pills{
+    flex-wrap:nowrap!important;justify-content:center!important;align-items:center!important;
+    overflow-x:auto!important;overflow-y:hidden!important;gap:6px!important;
+    padding:0 2px 2px!important;scrollbar-width:none!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+  .level-pills::-webkit-scrollbar{display:none!important;}
+  .pill{flex:0 0 auto!important;white-space:nowrap!important;padding:7px 10px!important;font-size:11px!important;}
+
+  .container{width:calc(100% - 24px)!important;max-width:none!important;}
+  #hero{padding:72px 10px 20px!important;}
+  #hero h1{font-size:40px!important;}
+  .subtitle{font-size:15px!important;}
+  .desc{max-width:100%!important;font-size:12px!important;line-height:1.62!important;}
+
+  .main{padding:10px 0 44px!important;}
+  .topic-shell{display:block!important;position:relative!important;min-width:0!important;}
+
+  /* Compact internal topic scroller. */
+  .topic-list{
+    position:relative!important;top:auto!important;width:100%!important;max-width:none!important;
+    max-height:20vh!important;overflow-y:auto!important;overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;overscroll-behavior:contain!important;
+    scrollbar-width:thin!important;
+    padding:0 6px 6px!important;margin-bottom:8px!important;
+    box-shadow:none!important;
+    background:rgba(17,19,26,.72)!important;
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+  }
+  .mobile-topic-close{
+    position:sticky!important;top:0!important;z-index:20!important;
+    display:flex!important;width:100%!important;height:31px!important;
+    margin:0!important;padding:4px 4px 0 0!important;
+    justify-content:flex-end!important;align-items:flex-start!important;
+    background:inherit!important;pointer-events:none!important;
+  }
+  .mobile-topic-close button{
+    position:sticky!important;top:4px!important;right:4px!important;
+    margin:0 0 0 auto!important;width:23px!important;height:23px!important;
+    display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    padding:0!important;border:1px solid var(--line)!important;border-radius:50%!important;
+    background:rgba(255,255,255,.06)!important;color:var(--text)!important;
+    font-size:16px!important;line-height:1!important;box-shadow:none!important;
+    pointer-events:auto!important;
+  }
+  .topic-label{padding:0 7px 5px!important;font-size:9px!important;position:static!important;}
+  #topicButtons{display:block!important;max-height:none!important;overflow:visible!important;padding:0 1px 2px!important;}
+  .topic-btn{
+    display:block!important;width:100%!important;max-width:none!important;
+    margin:2px 0!important;padding:8px 10px!important;font-size:11px!important;
+    line-height:1.35!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;
+  }
+  .mobile-topic-pill{
+    display:none!important;width:max-content!important;max-width:100%!important;
+    margin:0 auto 10px!important;padding:7px 13px!important;
+    border:1px solid var(--line)!important;border-radius:999px!important;
+    background:rgba(17,19,26,.72)!important;color:var(--text)!important;
+    font-size:11px!important;font-weight:700!important;box-shadow:none!important;
+  }
+  .topic-shell.mobile-topics-collapsed .topic-list{display:none!important;}
+  .topic-shell.mobile-topics-collapsed .mobile-topic-pill{display:inline-flex!important;align-items:center!important;justify-content:center!important;}
+
+  /* Main surface has a visible phone-side breathing space. */
+  .detail{
+    width:100%!important;max-width:none!important;
+    padding:15px 12px!important;margin:0!important;border-radius:16px!important;
+    overflow-x:hidden!important;
+  }
+  .detail h2{font-size:26px!important;line-height:1.12!important;margin-bottom:14px!important;}
+  .story{font-size:14px!important;line-height:1.78!important;}
+
+  /* Was?-style vocabulary grid: two columns, single outer surface. */
+  .vocab-grid{
+    display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:0!important;border:1px solid var(--line)!important;border-radius:12px!important;
+    overflow:hidden!important;background:rgba(0,0,0,.04)!important;box-shadow:none!important;
+  }
+  .vocab-item{
+    min-width:0!important;margin:0!important;padding:11px 10px!important;
+    border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;
+  }
+  .vocab-item:nth-child(odd){border-right:1px solid var(--line)!important;}
+  .vocab-item:nth-child(n+3){border-top:1px solid var(--line)!important;}
+  .vocab-de{font-size:12.5px!important;line-height:1.42!important;white-space:normal!important;overflow-wrap:anywhere!important;}
+  .vocab-en{font-size:11.5px!important;line-height:1.45!important;}
+
+  /* Four-column vocabulary tables become Was?-style stacked rows on phones.
+     Word + meaning + sound share the first row; example + translation span the second. */
+  .cinema-table,.similar-table,.ending-table,.bank-table,.verb-cinema-table,.b1-table,
+  .practice-reference-table{
+    display:block!important;width:100%!important;min-width:0!important;table-layout:auto!important;
+  }
+  .cinema-table thead,.similar-table thead,.ending-table thead,.bank-table thead,.verb-cinema-table thead,.b1-table thead,.practice-reference-table thead{
+    display:none!important;
+  }
+  .cinema-table tbody,.similar-table tbody,.ending-table tbody,.bank-table tbody,.verb-cinema-table tbody,.b1-table tbody,.practice-reference-table tbody{
+    display:block!important;width:100%!important;
+  }
+  .cinema-table tr,.similar-table tr,.ending-table tr,.bank-table tr,.verb-cinema-table tr,.b1-table tr,.practice-reference-table tr{
+    display:grid!important;width:100%!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 40px!important;
+    column-gap:10px!important;row-gap:0!important;
+    border-bottom:1px solid rgba(255,255,255,.08)!important;
+    padding:0!important;position:relative!important;
+  }
+  .cinema-table tr:last-child,.similar-table tr:last-child,.ending-table tr:last-child,.bank-table tr:last-child,.verb-cinema-table tr:last-child,.b1-table tr:last-child,.practice-reference-table tr:last-child{border-bottom:0!important;}
+  .cinema-table td,.similar-table td,.ending-table td,.bank-table td,.verb-cinema-table td,.b1-table td,.practice-reference-table td{
+    display:block!important;width:auto!important;min-width:0!important;
+    padding:11px 10px!important;border:0!important;overflow-wrap:anywhere!important;word-break:normal!important;white-space:normal!important;
+    line-height:1.5!important;font-size:12.5px!important;
+  }
+  /* Word */
+  .cinema-table td:nth-child(1),.similar-table td:nth-child(1),.ending-table td:nth-child(1),.bank-table td:nth-child(1),.verb-cinema-table td:nth-child(1),.b1-table td:nth-child(1),.practice-reference-table td:nth-child(1){grid-column:1;grid-row:1;padding-right:2px!important;}
+  /* Meaning */
+  .cinema-table td:nth-child(2),.similar-table td:nth-child(2),.ending-table td:nth-child(2),.bank-table td:nth-child(2),.verb-cinema-table td:nth-child(2),.b1-table td:nth-child(2),.practice-reference-table td:nth-child(2){grid-column:2;grid-row:1;padding-left:2px!important;color:var(--muted)!important;}
+  /* Example sentence occupies the full lower row. */
+  .cinema-table td:nth-child(3),.similar-table td:nth-child(3),.ending-table td:nth-child(3),.bank-table td:nth-child(3),.verb-cinema-table td:nth-child(3),.b1-table td:nth-child(3),.practice-reference-table td:nth-child(3){grid-column:1 / 4;grid-row:2;padding-top:0!important;font-size:14.5px!important;line-height:1.58!important;color:var(--text-soft)!important;}
+  /* Sound stays inside its grid cell, never floating outside the table. */
+  .cinema-table td:nth-child(4),.similar-table td:nth-child(4),.ending-table td:nth-child(4),.bank-table td:nth-child(4),.verb-cinema-table td:nth-child(4),.b1-table td:nth-child(4),.practice-reference-table td:nth-child(4){grid-column:3;grid-row:1 / span 2;padding:10px 7px!important;display:flex!important;align-items:flex-start!important;justify-content:flex-end!important;}
+  .cinema-speaker,.similar-speaker,.ending-speaker,.b1-audio{width:34px!important;height:34px!important;min-width:34px!important;max-width:34px!important;border-radius:9px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;float:none!important;margin:0!important;position:static!important;}
+  .cinema-translation,.similar-example-translation,.ending-translation,.bank-table .bank-translation,.verb-example-en,.b1-translation,.practice-table-translation{display:block!important;margin-top:4px!important;font-size:11.5px!important;line-height:1.48!important;color:var(--muted)!important;}
+
+  /* Native 3-column tables: readable stacked rows, no desktop squeeze. */
+  .komposita-table,.question-reference-table,.other-guide-table,.adj-reference-table{
+    width:100%!important;min-width:0!important;table-layout:auto!important;
+  }
+  .komposita-table-wrap,.question-reference-wrap,.other-guide-table-wrap,.adj-reference-wrap{overflow-x:hidden!important;}
+
+  /* Match-the-words: compact but comfortable. */
+  .practice-wrap{width:100%!important;max-width:none!important;}
+  .practice-stage{grid-template-columns:1fr 1fr!important;gap:8px!important;}
+  .practice-card{width:100%!important;min-width:0!important;max-width:none!important;min-height:44px!important;height:44px!important;padding:0 8px!important;border-radius:9999px!important;}
+  .practice-card span{font-size:11px!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;}
+  .practice-col:first-child .practice-card span{font-size:12px!important;}
+
+  /* Remove unnecessary mobile shadows/glow from the topic scroller. */
+  body.light .topic-list{background:rgba(255,255,255,.94)!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+  body.light .mobile-topic-close{background:rgba(255,255,255,.96)!important;}
+  body.light .mobile-topic-pill{background:rgba(255,255,255,.94)!important;}
+}
+
+@media (max-width:430px){
+  .practice-stage{grid-template-columns:1fr!important;}
+  .practice-card{min-height:42px!important;height:42px!important;}
+}
+</style>
+<style id="universal-was-apple-vocab-final">
+/* =========================================================
+   UNIVERSAL WAS? / APPLE-INSPIRED ENTRY SYSTEM
+   Presentation only: one consistent hierarchy for every
+   vocabulary entry on desktop and phone.
+   ========================================================= */
+:root{
+  --entry-de:#17181c;
+  --entry-body:#333946;
+  --entry-meaning:#667184;
+  --entry-en:#7b8492;
+  --entry-meta:#9098a5;
+  --entry-line:rgba(20,24,35,.10);
+  --entry-dark-line:rgba(255,255,255,.09);
+}
+body:not(.light){
+  --entry-de:rgba(248,248,251,.96);
+  --entry-body:rgba(248,248,251,.84);
+  --entry-meaning:rgba(248,248,251,.60);
+  --entry-en:rgba(248,248,251,.44);
+  --entry-meta:rgba(248,248,251,.42);
+}
+
+/* One universal hierarchy: German term > example > meaning > English translation. */
+.vocab-de,
+.similar-table td:first-child,
+.cinema-table td:first-child,
+.ending-table td:first-child,
+.bank-table td:first-child,
+.verb-cinema-table td:first-child,
+.komposita-words-table td:first-child,
+.b1-table td:first-child,
+.practice-reference-table td:first-child{
+  color:var(--entry-de)!important;
+  font-weight:750!important;
+  letter-spacing:-.018em!important;
+}
+
+.similar-table td:nth-child(2),
+.cinema-table td:nth-child(2),
+.ending-table td:nth-child(2),
+.bank-table td:nth-child(2),
+.verb-cinema-table td:nth-child(2),
+.komposita-words-table td:nth-child(2),
+.b1-table td:nth-child(2),
+.practice-reference-table td:nth-child(2),
+.vocab-en{
+  color:var(--entry-meaning)!important;
+  font-weight:400!important;
+}
+
+.similar-table td:nth-child(3),
+.cinema-table td:nth-child(3),
+.ending-table td:nth-child(3),
+.bank-table td:nth-child(3),
+.verb-cinema-table td:nth-child(3),
+.komposita-words-table td:nth-child(3),
+.b1-table td:nth-child(3),
+.practice-reference-table td:nth-child(3),
+.verb-example-de,
+.komposita-example-de{
+  color:var(--entry-body)!important;
+  font-weight:400!important;
+}
+
+.similar-example-translation,
+.cinema-translation,
+.ending-translation,
+.bank-table .bank-translation,
+.verb-example-en,
+.komposita-example-en,
+.b1-translation,
+.practice-table-translation,
+.question-card-translation{
+  color:var(--entry-en)!important;
+  font-weight:400!important;
+}
+
+/* Same table surface everywhere: subtle row separation, no heavy inner cards. */
+.similar-table-wrap,
+.cinema-table-wrap,
+.ending-table-wrap,
+.bank-table-wrap,
+.komposita-table-wrap,
+.practice-reference-table-wrap,
+.b1-table-wrap,
+.other-guide-table-wrap,
+.adj-reference-wrap{
+  border:1px solid var(--entry-line)!important;
+  border-radius:18px!important;
+  background:rgba(255,255,255,.028)!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
+}
+body:not(.light) .similar-table-wrap,
+body:not(.light) .cinema-table-wrap,
+body:not(.light) .ending-table-wrap,
+body:not(.light) .bank-table-wrap,
+body:not(.light) .komposita-table-wrap,
+body:not(.light) .practice-reference-table-wrap,
+body:not(.light) .b1-table-wrap,
+body:not(.light) .other-guide-table-wrap,
+body:not(.light) .adj-reference-wrap{
+  border-color:var(--entry-dark-line)!important;
+  background:rgba(255,255,255,.025)!important;
+}
+
+.similar-table,
+.cinema-table,
+.ending-table,
+.bank-table,
+.komposita-table,
+.practice-reference-table,
+.b1-table,
+.other-guide-table,
+.adj-reference-table{
+  width:100%!important;
+  max-width:100%!important;
+  border-collapse:collapse!important;
+  table-layout:fixed!important;
+}
+
+.similar-table th,.similar-table td,
+.cinema-table th,.cinema-table td,
+.ending-table th,.ending-table td,
+.bank-table th,.bank-table td,
+.komposita-table th,.komposita-table td,
+.practice-reference-table th,.practice-reference-table td,
+.b1-table th,.b1-table td,
+.other-guide-table th,.other-guide-table td,
+.adj-reference-table th,.adj-reference-table td{
+  border-bottom:1px solid var(--entry-line)!important;
+  vertical-align:top!important;
+  text-align:left!important;
+}
+body:not(.light) .similar-table th,body:not(.light) .similar-table td,
+body:not(.light) .cinema-table th,body:not(.light) .cinema-table td,
+body:not(.light) .ending-table th,body:not(.light) .ending-table td,
+body:not(.light) .bank-table th,body:not(.light) .bank-table td,
+body:not(.light) .komposita-table th,body:not(.light) .komposita-table td,
+body:not(.light) .practice-reference-table th,body:not(.light) .practice-reference-table td,
+body:not(.light) .b1-table th,body:not(.light) .b1-table td,
+body:not(.light) .other-guide-table th,body:not(.light) .other-guide-table td,
+body:not(.light) .adj-reference-table th,body:not(.light) .adj-reference-table td{
+  border-bottom-color:var(--entry-dark-line)!important;
+}
+.similar-table tr:last-child td,
+.cinema-table tr:last-child td,
+.ending-table tr:last-child td,
+.bank-table tr:last-child td,
+.komposita-table tr:last-child td,
+.practice-reference-table tr:last-child td,
+.b1-table tr:last-child td,
+.other-guide-table tr:last-child td,
+.adj-reference-table tr:last-child td{border-bottom:0!important;}
+
+/* Universal desktop proportions: German / meaning / example / audio. */
+.similar-table th:nth-child(1),.similar-table td:nth-child(1),
+.cinema-table th:nth-child(1),.cinema-table td:nth-child(1),
+.ending-table th:nth-child(1),.ending-table td:nth-child(1),
+.bank-table th:nth-child(1),.bank-table td:nth-child(1),
+.verb-cinema-table th:nth-child(1),.verb-cinema-table td:nth-child(1),
+.b1-table th:nth-child(1),.b1-table td:nth-child(1),
+.practice-reference-table th:nth-child(1),.practice-reference-table td:nth-child(1){width:31%!important;}
+.similar-table th:nth-child(2),.similar-table td:nth-child(2),
+.cinema-table th:nth-child(2),.cinema-table td:nth-child(2),
+.ending-table th:nth-child(2),.ending-table td:nth-child(2),
+.bank-table th:nth-child(2),.bank-table td:nth-child(2),
+.verb-cinema-table th:nth-child(2),.verb-cinema-table td:nth-child(2),
+.b1-table th:nth-child(2),.b1-table td:nth-child(2),
+.practice-reference-table th:nth-child(2),.practice-reference-table td:nth-child(2){width:17%!important;}
+.similar-table th:nth-child(3),.similar-table td:nth-child(3),
+.cinema-table th:nth-child(3),.cinema-table td:nth-child(3),
+.ending-table th:nth-child(3),.ending-table td:nth-child(3),
+.bank-table th:nth-child(3),.bank-table td:nth-child(3),
+.verb-cinema-table th:nth-child(3),.verb-cinema-table td:nth-child(3),
+.b1-table th:nth-child(3),.b1-table td:nth-child(3),
+.practice-reference-table th:nth-child(3),.practice-reference-table td:nth-child(3){width:auto!important;}
+.similar-table th:nth-child(4),.similar-table td:nth-child(4),
+.cinema-table th:nth-child(4),.cinema-table td:nth-child(4),
+.ending-table th:nth-child(4),.ending-table td:nth-child(4),
+.bank-table th:nth-child(4),.bank-table td:nth-child(4),
+.verb-cinema-table th:nth-child(4),.verb-cinema-table td:nth-child(4),
+.b1-table th:nth-child(4),.b1-table td:nth-child(4),
+.practice-reference-table th:nth-child(4),.practice-reference-table td:nth-child(4){width:48px!important;}
+
+.similar-table th,.cinema-table th,.ending-table th,.bank-table th,
+.practice-reference-table th,.b1-table th{
+  color:var(--entry-meaning)!important;
+  font-weight:700!important;
+  letter-spacing:.05em!important;
+  background:rgba(255,255,255,.045)!important;
+}
+body.light .similar-table th,body.light .cinema-table th,body.light .ending-table th,
+body.light .bank-table th,body.light .practice-reference-table th,body.light .b1-table th{
+  background:rgba(20,24,35,.035)!important;
+  color:#687487!important;
+}
+
+/* Audio always stays inside the final table cell. */
+.similar-table td:last-child,
+.cinema-table td:last-child,
+.ending-table td:last-child,
+.bank-table td:last-child,
+.verb-cinema-table td:last-child,
+.b1-table td:last-child,
+.practice-reference-table td:last-child{
+  width:48px!important;
+  text-align:center!important;
+  vertical-align:top!important;
+  padding:10px 7px!important;
+  overflow:visible!important;
+}
+.similar-speaker,.cinema-speaker,.ending-speaker,.b1-audio,
+.verb-cinema-table button{
+  position:static!important;
+  float:none!important;
+  margin:0 auto!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex:0 0 auto!important;
+}
+
+/* Plain vocabulary cards use the same hierarchy without becoming oversized. */
+.vocab-item{
+  border:1px solid var(--entry-line)!important;
+  background:rgba(255,255,255,.028)!important;
+  box-shadow:none!important;
+}
+body:not(.light) .vocab-item{border-color:var(--entry-dark-line)!important;background:rgba(255,255,255,.028)!important;}
+.vocab-de{font-size:15px;line-height:1.42;}
+.vocab-en{font-size:11.5px;line-height:1.45;}
+
+/* Verb entries follow the same hierarchy as ordinary vocabulary entries. */
+.verb-forms,.verb-form,.verb-form strong,.verb-perfekt strong{
+  color:var(--entry-de)!important;
+  font-weight:750!important;
+}
+.verb-meaning{color:var(--entry-meaning)!important;font-weight:400!important;}
+.verb-example-de{color:var(--entry-body)!important;font-weight:400!important;}
+.verb-example-en{color:var(--entry-en)!important;font-weight:400!important;}
+
+/* Mobile: keep the Was? two-level row geometry comfortable and consistent. */
+@media(max-width:700px){
+  .similar-table-wrap,.cinema-table-wrap,.ending-table-wrap,.bank-table-wrap,
+  .komposita-table-wrap,.practice-reference-table-wrap,.b1-table-wrap,
+  .other-guide-table-wrap,.adj-reference-wrap{border-radius:16px!important;}
+
+  .similar-table,.cinema-table,.ending-table,.bank-table,.verb-cinema-table,
+  .b1-table,.practice-reference-table,.komposita-words-table{display:block!important;}
+  .similar-table thead,.cinema-table thead,.ending-table thead,.bank-table thead,
+  .verb-cinema-table thead,.b1-table thead,.practice-reference-table thead,
+  .komposita-words-table thead{display:none!important;}
+  .similar-table tbody,.cinema-table tbody,.ending-table tbody,.bank-table tbody,
+  .verb-cinema-table tbody,.b1-table tbody,.practice-reference-table tbody,
+  .komposita-words-table tbody{display:block!important;width:100%!important;}
+
+  .similar-table tr,.cinema-table tr,.ending-table tr,.bank-table tr,
+  .verb-cinema-table tr,.b1-table tr,.practice-reference-table tr,
+  .komposita-words-table tr{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) 40px!important;
+    column-gap:9px!important;
+    width:100%!important;
+    border-bottom:1px solid var(--entry-line)!important;
+  }
+  body:not(.light) .similar-table tr,body:not(.light) .cinema-table tr,
+  body:not(.light) .ending-table tr,body:not(.light) .bank-table tr,
+  body:not(.light) .verb-cinema-table tr,body:not(.light) .b1-table tr,
+  body:not(.light) .practice-reference-table tr,body:not(.light) .komposita-words-table tr{
+    border-bottom-color:var(--entry-dark-line)!important;
+  }
+  .similar-table tr:last-child,.cinema-table tr:last-child,.ending-table tr:last-child,
+  .bank-table tr:last-child,.verb-cinema-table tr:last-child,.b1-table tr:last-child,
+  .practice-reference-table tr:last-child,.komposita-words-table tr:last-child{border-bottom:0!important;}
+
+  .similar-table td,.cinema-table td,.ending-table td,.bank-table td,
+  .verb-cinema-table td,.b1-table td,.practice-reference-table td,
+  .komposita-words-table td{
+    width:auto!important;
+    min-width:0!important;
+    padding:10px 8px!important;
+    border:0!important;
+    overflow-wrap:anywhere!important;
+    word-break:normal!important;
+    white-space:normal!important;
+  }
+  .similar-table td:nth-child(1),.cinema-table td:nth-child(1),.ending-table td:nth-child(1),
+  .bank-table td:nth-child(1),.verb-cinema-table td:nth-child(1),.b1-table td:nth-child(1),
+  .practice-reference-table td:nth-child(1),.komposita-words-table td:nth-child(1){grid-column:1;grid-row:1;}
+  .similar-table td:nth-child(2),.cinema-table td:nth-child(2),.ending-table td:nth-child(2),
+  .bank-table td:nth-child(2),.verb-cinema-table td:nth-child(2),.b1-table td:nth-child(2),
+  .practice-reference-table td:nth-child(2),.komposita-words-table td:nth-child(2){grid-column:2;grid-row:1;}
+  .similar-table td:nth-child(3),.cinema-table td:nth-child(3),.ending-table td:nth-child(3),
+  .bank-table td:nth-child(3),.verb-cinema-table td:nth-child(3),.b1-table td:nth-child(3),
+  .practice-reference-table td:nth-child(3),.komposita-words-table td:nth-child(3){grid-column:1 / 4;grid-row:2;padding-top:1px!important;}
+  .similar-table td:nth-child(4),.cinema-table td:nth-child(4),.ending-table td:nth-child(4),
+  .bank-table td:nth-child(4),.verb-cinema-table td:nth-child(4),.b1-table td:nth-child(4),
+  .practice-reference-table td:nth-child(4),.komposita-words-table td:nth-child(4){grid-column:3;grid-row:1 / span 2;display:flex!important;align-items:flex-start!important;justify-content:center!important;padding:10px 3px!important;}
+
+  .similar-table td:first-child,.cinema-table td:first-child,.ending-table td:first-child,
+  .bank-table td:first-child,.verb-cinema-table td:first-child,.b1-table td:first-child,
+  .practice-reference-table td:first-child,.komposita-words-table td:first-child{
+    font-size:14px!important;
+    font-weight:750!important;
+    line-height:1.42!important;
+  }
+  .similar-table td:nth-child(2),.cinema-table td:nth-child(2),.ending-table td:nth-child(2),
+  .bank-table td:nth-child(2),.verb-cinema-table td:nth-child(2),.b1-table td:nth-child(2),
+  .practice-reference-table td:nth-child(2),.komposita-words-table td:nth-child(2){
+    font-size:11.2px!important;
+    line-height:1.44!important;
+  }
+  .similar-table td:nth-child(3),.cinema-table td:nth-child(3),.ending-table td:nth-child(3),
+  .bank-table td:nth-child(3),.verb-cinema-table td:nth-child(3),.b1-table td:nth-child(3),
+  .practice-reference-table td:nth-child(3),.komposita-words-table td:nth-child(3){
+    font-size:13px!important;
+    line-height:1.52!important;
+  }
+  .similar-example-translation,.cinema-translation,.ending-translation,
+  .bank-table .bank-translation,.verb-example-en,.b1-translation,
+  .practice-table-translation,.komposita-example-en{
+    font-size:10.7px!important;
+    line-height:1.42!important;
+  }
+  .similar-speaker,.cinema-speaker,.ending-speaker,.b1-audio,
+  .verb-cinema-table button,.komposita-speaker{width:32px!important;height:32px!important;min-width:32px!important;max-width:32px!important;}
+
+  .vocab-item{padding:12px 11px!important;}
+  .vocab-de{font-size:14px!important;font-weight:750!important;line-height:1.42!important;}
+  .vocab-en{font-size:11px!important;line-height:1.43!important;opacity:.82!important;}
+
+  /* Match-the-words selected feedback uses the same comfortable body scale. */
+  .practice-message{font-size:12px!important;line-height:1.55!important;}
+  .practice-table-sentence{font-size:14px!important;line-height:1.58!important;font-weight:500!important;}
+  .practice-table-translation{font-size:10.7px!important;line-height:1.42!important;}
+}
+</style>
+
+
+
+
+
+
+
+
 </head>
 <body>
 
@@ -3426,10 +3954,10 @@ body.light .practice-card:hover:not(.is-selected):not(.is-matched){
     <div class="container">
         <div class="level-pills" id="categoryPills">
             <button class="pill" data-category="b1">B1</button>
-            <button class="pill active" data-category="nouns">Nouns</button>
+            <button class="pill" data-category="nouns">Nouns</button>
             <button class="pill" data-category="verbs">Verbs</button>
             <button class="pill" data-category="adjectives">Adjectives</button>
-            <button class="pill" data-category="other">Other</button>
+            <button class="pill active" data-category="other">Other</button>
             <button class="pill" data-category="komposita">Komposita</button>
             <button class="pill" data-category="endings">Endings</button>
             <button class="pill" data-category="similar">Similar</button>
@@ -3440,12 +3968,14 @@ body.light .practice-card:hover:not(.is-selected):not(.is-matched){
 
 <main class="main container">
     <div class="topic-shell">
-        <aside class="topic-list">
+        <aside class="topic-list" aria-label="Topic navigation">
+            <div class="mobile-topic-close"><button type="button" aria-label="Themen schließen" title="Themen schließen" onclick="toggleMobileTopics(false)">×</button></div>
             <div class="topic-label" id="topicLabel">Nouns · Subtopics</div>
             <div id="topicButtons">
                 <!-- Subtopic buttons will be injected here via JS -->
             </div>
         </aside>
+        <button type="button" class="mobile-topic-pill" aria-label="Themen öffnen" onclick="toggleMobileTopics(true)">☰ Themen</button>
         
         <section class="detail" id="detail">
             <!-- Content will be injected here via JS -->
@@ -4293,7 +4823,7 @@ const topicButtonsContainer = document.getElementById('topicButtons');
 const detailContainer = document.getElementById('detail');
 const themeToggle = document.getElementById('themeToggle');
 
-let currentCategory = 'nouns'; // Default matches the HTML active pill
+let currentCategory = 'other'; // Default matches the HTML active pill
 
 function init() {
     setupPills();
@@ -4585,7 +5115,7 @@ function headingEmoji(title){
     return preferred;
 }
 
-function renderSharedVocabularyTable(title,note,rows,host){host=host||detailContainer;let h=`<h2 class="similar-topic-title">${headingEmoji(title)} ${escapeHtml(title)}</h2><p class="similar-topic-note">${escapeHtml(note)}</p><div class="similar-table-wrap"><table class="similar-table"><thead><tr><th>Word</th><th>Meaning</th><th>Example sentence</th><th aria-label="Audio"></th></tr></thead><tbody>`;rows.forEach(r=>h+=`<tr><td>${escapeHtml(r[0])}</td><td>${escapeHtml(r[1])}</td><td>${escapeHtml(r[2])}<span class="similar-example-translation"> ${escapeHtml(r[3])}</span></td><td><button class="similar-speaker" type="button" title="Say the word, then the sentence" data-word="${escapeHtml(r[0])}" data-sentence="${escapeHtml(r[2])}">🔊</button></td></tr>`);h+='</tbody></table></div>';host.innerHTML=h;host.querySelectorAll('.similar-speaker').forEach(b=>b.addEventListener('click',()=>speakSequence(b.dataset.word,b.dataset.sentence)));}
+function renderSharedVocabularyTable(title,note,rows,host){host=host||detailContainer;let h=`<h2 class="similar-topic-title">${headingEmoji(title)} ${escapeHtml(title)}</h2><p class="similar-topic-note">${escapeHtml(note)}</p><div class="similar-table-wrap"><table class="similar-table"><thead><tr><th>Word</th><th>Meaning</th><th>Example sentence</th><th aria-label="Audio"></th></tr></thead><tbody>`;rows.forEach(r=>h+=`<tr><td><strong>${escapeHtml(r[0])}</strong></td><td>${escapeHtml(r[1])}</td><td>${escapeHtml(r[2])}<span class="similar-example-translation"> ${escapeHtml(r[3])}</span></td><td><button class="similar-speaker" type="button" title="Say the word, then the sentence" data-word="${escapeHtml(r[0])}" data-sentence="${escapeHtml(r[2])}">🔊</button></td></tr>`);h+='</tbody></table></div>';host.innerHTML=h;host.querySelectorAll('.similar-speaker').forEach(b=>b.addEventListener('click',()=>speakSequence(b.dataset.word,b.dataset.sentence)));}
 const BASIC_NOUN_ROWS = {"Family & People":[["die Familie","family","Meine Familie lebt in Pakistan.","My family lives in Pakistan."],["die Mutter / der Vater","mother / father","Meine Mutter und mein Vater arbeiten heute.","My mother and father are working today."],["die Eltern","parents","Meine Eltern wohnen in Lahore.","My parents live in Lahore."],["die Schwester / der Bruder","sister / brother","Meine Schwester hilft meinem Bruder.","My sister helps my brother."],["die Tochter / der Sohn","daughter / son","Die Tochter und der Sohn spielen im Garten.","The daughter and the son are playing in the garden."],["die Großmutter / der Großvater","grandmother / grandfather","Meine Großeltern besuchen uns am Wochenende.","My grandparents visit us at the weekend."],["das Kind","child","Das Kind lernt schnell Deutsch.","The child learns German quickly."],["der Mann / die Frau","man, husband / woman, wife","Der Mann spricht mit der Frau.","The man is talking to the woman."]],"Food & Drinks":[["das Wasser","water","Ich trinke jeden Morgen Wasser.","I drink water every morning."],["das Brot","bread","Das Brot liegt auf dem Tisch.","The bread is on the table."],["der Käse","cheese","Der Käse schmeckt sehr gut.","The cheese tastes very good."],["die Milch","milk","Die Milch steht im Kühlschrank.","The milk is in the refrigerator."],["der Kaffee / der Tee","coffee / tea","Morgens trinke ich Kaffee oder Tee.","In the morning I drink coffee or tea."],["der Apfel / die Banane","apple / banana","Ich esse einen Apfel oder eine Banane.","I eat an apple or a banana."],["das Fleisch","meat","Heute kochen wir Fleisch mit Gemüse.","Today we are cooking meat with vegetables."],["das Gemüse / das Obst","vegetables / fruit","Wir kaufen frisches Gemüse und Obst.","We buy fresh vegetables and fruit."]],"Places & City":[["die Stadt","city","Die Stadt ist heute sehr belebt.","The city is very lively today."],["die Straße","street","Die Straße ist wegen des Regens nass.","The street is wet because of the rain."],["der Bahnhof","train station","Wir treffen uns am Bahnhof.","We are meeting at the train station."],["der Flughafen","airport","Wir fahren morgen zum Flughafen.","We are going to the airport tomorrow."],["das Krankenhaus","hospital","Der Arzt arbeitet im Krankenhaus.","The doctor works in the hospital."],["das Restaurant","restaurant","Das Restaurant ist heute voll.","The restaurant is full today."],["die Schule / die Universität","school / university","Meine Schwester besucht die Universität.","My sister attends university."],["die Bank","bank","Ich muss noch zur Bank gehen.","I still have to go to the bank."]]};
 function patchVocabularyNavigation(){
     const other=VOCAB_DATA.other?.topics||[];
@@ -4872,7 +5402,7 @@ function renderSimilarTopic(type, category, host) {
                 <tbody>
                     ${rows.map((r) => `
                         <tr>
-                            <td>${escapeHtml(r.german)}</td>
+                            <td><strong>${escapeHtml(r.german)}</strong></td>
                             <td>${escapeHtml(r.english)}</td>
                             <td>
                                 ${escapeHtml(r.sentence)}
@@ -5002,6 +5532,12 @@ renderTopicContent = function(topic) {
 };
 
 installSourceVocabularyCopies();
+
+function toggleMobileTopics(open){
+    const shell=document.querySelector('.topic-shell');
+    if(!shell) return;
+    shell.classList.toggle('mobile-topics-collapsed', !open);
+}
 
 document.addEventListener('DOMContentLoaded', init);
 
@@ -5393,6 +5929,8 @@ const B1_DATA={"source":"Goethe-Zertifikat B1 Wortliste","topics":[{"key":"wg_ab
       btn.classList.add('is-selected');
       s.selected=id;const selectedPair=s.pairs[id];msg(selectedPair?.sentence||'Wähle die passende englische Bedeutung.',!!selectedPair?.sentence);return;
     }
+    // Clicking a matching English card also speaks its German pair immediately.
+    speak(s.pairs[id]?.de);
     if(s.selected===null){msg('Wähle zuerst ein deutsches Wort.');wrong(btn);return;}
     const pair=s.pairs[s.selected],left=detailContainer.querySelector(`.practice-card[data-side="left"][data-id="${s.selected}"]`);
     if(pair&&pair.id===id){
@@ -6429,5 +6967,1524 @@ body.light .practice-card.is-matched {
 }
 body.light .practice-card.is-matched span { color:rgba(23,27,36,.42) !important; }
 </style>
+<style id="final-phone-readability-entry-borders">
+@media (max-width:700px){
+  .practice-message-active{font-size:15.5px !important;line-height:1.62 !important;padding:5px 6px !important;}
+  body.light .vocab-item, body.light .comparison-item, body.light .other-guide-card, body.light .verb-rowbox, body.light .practice-card{border-color:rgba(20,24,35,.10) !important;}
+  body.light .practice-reference-table tbody tr,
+  body.light .similar-table tbody tr,
+  body.light .cinema-table tbody tr,
+  body.light .ending-table tbody tr,
+  body.light .bank-table tbody tr,
+  body.light .verb-cinema-table tbody tr,
+  body.light .other-guide-table tbody tr,
+  body.light .adj-reference-table tbody tr{border-bottom:1px solid rgba(20,24,35,.085) !important;}
+  body.light .practice-reference-table tbody tr:last-child,
+  body.light .similar-table tbody tr:last-child,
+  body.light .cinema-table tbody tr:last-child,
+  body.light .ending-table tbody tr:last-child,
+  body.light .bank-table tbody tr:last-child,
+  body.light .verb-cinema-table tbody tr:last-child,
+  body.light .other-guide-table tbody tr:last-child,
+  body.light .adj-reference-table tbody tr:last-child{border-bottom-color:transparent !important;}
+}
+</style>
+
+
+<style id="apple-typography-mobile-final">
+/* Mobile-only typography hierarchy inspired by Apple's restrained information hierarchy.
+   Desktop remains untouched. */
+@media (max-width:700px){
+  /* Core vocabulary cards */
+  .vocab-item{
+    padding:13px 14px !important;
+    min-height:58px !important;
+  }
+  .vocab-de{
+    font-size:15px !important;
+    line-height:1.32 !important;
+    font-weight:700 !important;
+    letter-spacing:-.012em !important;
+    color:var(--text) !important;
+  }
+  .vocab-en{
+    margin-top:4px !important;
+    font-size:11.5px !important;
+    line-height:1.42 !important;
+    font-weight:400 !important;
+    color:var(--muted) !important;
+    opacity:.72 !important;
+    letter-spacing:0 !important;
+  }
+
+  /* Shared table hierarchy: German -> meaning -> example -> English. */
+  .similar-table td:first-child,
+  .cinema-table td:first-child,
+  .ending-table td:first-child,
+  .bank-table td:first-child,
+  .practice-reference-table td:first-child,
+  .goethe-a1a2-host .cinema-table td:first-child,
+  .data-table td:first-child{
+    font-size:14px !important;
+    line-height:1.38 !important;
+    font-weight:700 !important;
+    color:var(--text) !important;
+  }
+  .similar-table td:nth-child(2),
+  .cinema-table td:nth-child(2),
+  .ending-table td:nth-child(2),
+  .bank-table td:nth-child(2),
+  .practice-reference-table td:nth-child(2),
+  .goethe-a1a2-host .cinema-table td:nth-child(2),
+  .data-table td:nth-child(2){
+    font-size:11.75px !important;
+    line-height:1.42 !important;
+    font-weight:400 !important;
+    color:var(--muted) !important;
+    opacity:.74 !important;
+  }
+  .similar-table td:nth-child(3),
+  .cinema-table td:nth-child(3),
+  .ending-table td:nth-child(3),
+  .bank-table td:nth-child(3),
+  .practice-reference-table td:nth-child(3),
+  .goethe-a1a2-host .cinema-table td:nth-child(3),
+  .data-table td:nth-child(3){
+    font-size:13.5px !important;
+    line-height:1.56 !important;
+    font-weight:400 !important;
+    color:var(--text-soft) !important;
+  }
+
+  .similar-table td:nth-child(3) .similar-example-translation,
+  .cinema-table td:nth-child(3) .cinema-translation,
+  .ending-table td:nth-child(3) .ending-translation,
+  .bank-table td:nth-child(3) .bank-translation,
+  .practice-reference-table td:nth-child(3) .practice-table-translation,
+  .data-table td:nth-child(3) .translation,
+  .data-table td:nth-child(3) .english,
+  .data-table td:nth-child(3) .en{
+    display:block !important;
+    margin-top:5px !important;
+    font-size:11.25px !important;
+    line-height:1.48 !important;
+    font-weight:400 !important;
+    color:var(--muted) !important;
+    opacity:.72 !important;
+  }
+
+  /* Practice / Was? reference rows */
+  .practice-table-word{
+    font-size:14px !important;
+    line-height:1.34 !important;
+    font-weight:700 !important;
+    color:var(--text) !important;
+  }
+  .practice-reference-table td:nth-child(2){
+    font-size:11.75px !important;
+    color:var(--muted) !important;
+    opacity:.74 !important;
+  }
+  .practice-table-sentence{
+    font-size:14.5px !important;
+    line-height:1.62 !important;
+    font-weight:400 !important;
+    color:var(--text-soft) !important;
+  }
+  .practice-table-translation{
+    font-size:11.25px !important;
+    line-height:1.48 !important;
+    font-weight:400 !important;
+    color:var(--muted) !important;
+    opacity:.72 !important;
+  }
+
+  /* Verb rows */
+  .verb-forms{
+    font-size:14px !important;
+    line-height:1.48 !important;
+    font-weight:700 !important;
+    color:var(--text) !important;
+  }
+  .verb-forms .verb-sep{font-weight:400 !important;color:var(--dim) !important;}
+  .verb-meaning{
+    font-size:11.75px !important;
+    line-height:1.45 !important;
+    color:var(--muted) !important;
+    opacity:.74 !important;
+  }
+  .verb-example-de{
+    font-size:13.5px !important;
+    line-height:1.56 !important;
+    font-weight:400 !important;
+    color:var(--text-soft) !important;
+  }
+  .verb-example-en{
+    font-size:11.25px !important;
+    line-height:1.48 !important;
+    font-weight:400 !important;
+    color:var(--muted) !important;
+    opacity:.72 !important;
+  }
+
+  /* W-question/reference content */
+  .other-guide-table td:first-child{font-size:14px !important;font-weight:700 !important;}
+  .other-guide-table td:last-child{font-size:13.25px !important;font-weight:400 !important;color:var(--text-soft) !important;}
+  .other-guide-card-title{font-size:13px !important;font-weight:700 !important;}
+  .other-guide-card-sub{font-size:11.5px !important;color:var(--muted) !important;opacity:.72 !important;}
+
+  /* Small metadata should never compete with German vocabulary. */
+  .similar-no,.cinema-no,.ending-root,.cinema-opposite,.verb-opposite,.lesson-vocab-note,.section-note{
+    font-size:10.5px !important;
+    opacity:.62 !important;
+  }
+}
+</style>
+
+
+<style id="apple-was-unified-typography-final">
+/* Unified modern vocabulary typography inspired by the Was? reference.
+   Presentation only: content and page structure remain unchanged. */
+:root{
+  --was-term:#f5f5f7;
+  --was-body:rgba(245,245,247,.88);
+  --was-meaning:rgba(245,245,247,.60);
+  --was-translation:rgba(245,245,247,.48);
+  --was-meta:rgba(245,245,247,.40);
+  --was-row-line:rgba(255,255,255,.085);
+  --was-row-fill:rgba(255,255,255,.028);
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Arial,sans-serif;
+  letter-spacing:-.012em;
+}
+
+/* One consistent entry language across the whole vocabulary page. */
+.vocab-item,
+.comparison-item,
+.other-guide-card,
+.verb-rowbox{
+  border-radius:14px;
+  box-shadow:none;
+}
+.vocab-item{
+  padding:15px 16px;
+  background:var(--was-row-fill);
+}
+.vocab-de{
+  color:var(--was-term);
+  font-size:14px;
+  line-height:1.35;
+  font-weight:750;
+  letter-spacing:-.012em;
+}
+.vocab-en{
+  color:var(--was-meaning);
+  font-size:11.5px;
+  line-height:1.45;
+  font-weight:400;
+  opacity:1;
+}
+
+/* Shared table hierarchy: term > meaning > example > English. */
+.similar-table,
+.cinema-table,
+.ending-table,
+.bank-table,
+.verb-cinema-table,
+.other-guide-table,
+.practice-reference-table,
+.data-table,
+.adj-reference-table{
+  font-family:inherit;
+}
+.similar-table th,.cinema-table th,.ending-table th,.bank-table th,
+.verb-cinema-table th,.other-guide-table th,.practice-reference-table th,
+.data-table th,.adj-reference-table thead th{
+  font-weight:650;
+  font-size:10.5px;
+  letter-spacing:.065em;
+  color:var(--was-meaning);
+}
+.similar-table td,.cinema-table td,.ending-table td,.bank-table td,
+.verb-cinema-table td,.other-guide-table td,.practice-reference-table td,
+.data-table td,.adj-reference-table td{
+  font-size:13px;
+  line-height:1.52;
+  color:var(--was-body);
+}
+.similar-table tbody tr,.cinema-table tbody tr,.ending-table tbody tr,
+.bank-table tbody tr,.verb-cinema-table tbody tr,.other-guide-table tbody tr,
+.practice-reference-table tbody tr,.data-table tbody tr,.adj-reference-table tbody tr{
+  border-bottom:1px solid var(--was-row-line);
+}
+.similar-table tbody tr:last-child,.cinema-table tbody tr:last-child,
+.ending-table tbody tr:last-child,.bank-table tbody tr:last-child,
+.verb-cinema-table tbody tr:last-child,.other-guide-table tbody tr:last-child,
+.practice-reference-table tbody tr:last-child,.data-table tbody tr:last-child,
+.adj-reference-table tbody tr:last-child{border-bottom:0}
+
+/* Strong German vocabulary / form cells. */
+.similar-table td:first-child,
+.cinema-table td:first-child,
+.ending-table td:first-child,
+.bank-table td:first-child,
+.practice-reference-table td:first-child,
+.data-table td:first-child,
+.adj-reference-table tbody td:first-child,
+.adj-reference-table tbody th:first-child,
+.verb-forms,
+.verb-form,
+.verb-form strong,
+.verb-perfekt strong,
+.other-guide-table td:first-child,
+.comparison-item strong{
+  color:var(--was-term);
+  font-weight:700;
+}
+
+/* Meaning layer: quieter and visually secondary. */
+.similar-table td:nth-child(2),
+.cinema-table td:nth-child(2),
+.ending-table td:nth-child(2),
+.bank-table td:nth-child(2),
+.practice-reference-table td:nth-child(2),
+.data-table td:nth-child(2),
+.verb-meaning,
+.comparison-item span,
+.other-guide-card-sub{
+  color:var(--was-meaning);
+  font-weight:400;
+}
+
+/* Example layer. */
+.similar-table td:nth-child(3),
+.cinema-table td:nth-child(3),
+.ending-table td:nth-child(3),
+.bank-table td:nth-child(3),
+.practice-reference-table td:nth-child(3),
+.data-table td:nth-child(3),
+.verb-example-de,
+.other-guide-table td:last-child{
+  color:var(--was-body);
+  font-weight:400;
+}
+
+/* English translations / secondary explanations. */
+.similar-example-translation,
+.cinema-translation,
+.ending-translation,
+.bank-table .bank-translation,
+.practice-table-translation,
+.practice-table-sentence + *,
+.verb-example-en,
+.data-table td .translation,
+.data-table td .english,
+.data-table td .en,
+.comparison-item span,
+.question-card-translation{
+  color:var(--was-translation);
+  font-size:11.5px;
+  line-height:1.46;
+  font-weight:400;
+}
+
+/* Quiet metadata. */
+.similar-no,.cinema-no,.ending-root,.cinema-opposite,
+.verb-opposite,.other-guide-footnote,.adj-reference-foot{
+  color:var(--was-meta);
+  font-size:10.5px;
+  line-height:1.4;
+  font-weight:400;
+}
+
+/* Verb entries should read like the same modern vocabulary rows. */
+.verb-rowbox{
+  background:var(--was-row-fill);
+  border:1px solid var(--was-row-line);
+}
+.verb-forms{font-weight:700;letter-spacing:-.012em}
+.verb-forms .verb-sep{color:var(--was-meta);font-weight:400}
+.verb-example-de{font-size:13px;line-height:1.52}
+.verb-example-en{font-size:11.5px;line-height:1.46;color:var(--was-translation)}
+
+/* Other/reference cards: quieter shell, stronger German headings. */
+.other-guide-card-title{
+  font-size:13px;
+  font-weight:750;
+  letter-spacing:-.01em;
+}
+.other-guide-card-sub{font-size:11.5px;line-height:1.45}
+
+/* Headings share the clean Was? hierarchy without changing layout. */
+.section-title,
+.verb-pattern-title,
+.ending-title,
+.similar-topic-title,
+.important-title{
+  font-weight:700;
+  letter-spacing:-.028em;
+}
+.section-note,
+.verb-pattern-note,
+.ending-note,
+.similar-topic-note,
+.verb-patterns-intro{
+  color:var(--was-meaning);
+  font-weight:400;
+}
+
+/* Light mode keeps the same hierarchy with softer ink rather than losing the row structure. */
+body.light{
+  --was-term:#171b24;
+  --was-body:#343b49;
+  --was-meaning:#5e6878;
+  --was-translation:#70798a;
+  --was-meta:#8a92a0;
+  --was-row-line:rgba(20,24,35,.095);
+  --was-row-fill:rgba(20,24,35,.018);
+}
+body.light .vocab-item,
+body.light .comparison-item,
+body.light .other-guide-card,
+body.light .verb-rowbox{
+  background:var(--was-row-fill)!important;
+  border-color:var(--was-row-line)!important;
+  box-shadow:none!important;
+}
+body.light .similar-table tbody tr,
+body.light .cinema-table tbody tr,
+body.light .ending-table tbody tr,
+body.light .bank-table tbody tr,
+body.light .verb-cinema-table tbody tr,
+body.light .other-guide-table tbody tr,
+body.light .practice-reference-table tbody tr,
+body.light .data-table tbody tr,
+body.light .adj-reference-table tbody tr{
+  border-bottom-color:var(--was-row-line)!important;
+}
+body.light .similar-table td:first-child,
+body.light .cinema-table td:first-child,
+body.light .ending-table td:first-child,
+body.light .bank-table td:first-child,
+body.light .practice-reference-table td:first-child,
+body.light .data-table td:first-child,
+body.light .adj-reference-table tbody td:first-child,
+body.light .adj-reference-table tbody th:first-child,
+body.light .verb-forms,
+body.light .verb-form,
+body.light .verb-form strong,
+body.light .verb-perfekt strong,
+body.light .other-guide-table td:first-child,
+body.light .comparison-item strong,
+body.light .vocab-de{
+  color:var(--was-term)!important;
+}
+body.light .similar-table td:nth-child(2),
+body.light .cinema-table td:nth-child(2),
+body.light .ending-table td:nth-child(2),
+body.light .bank-table td:nth-child(2),
+body.light .practice-reference-table td:nth-child(2),
+body.light .data-table td:nth-child(2),
+body.light .verb-meaning,
+body.light .comparison-item span,
+body.light .other-guide-card-sub,
+body.light .vocab-en{
+  color:var(--was-meaning)!important;
+}
+body.light .similar-table td:nth-child(3),
+body.light .cinema-table td:nth-child(3),
+body.light .ending-table td:nth-child(3),
+body.light .bank-table td:nth-child(3),
+body.light .practice-reference-table td:nth-child(3),
+body.light .data-table td:nth-child(3),
+body.light .verb-example-de,
+body.light .other-guide-table td:last-child{
+  color:var(--was-body)!important;
+}
+body.light .similar-example-translation,
+body.light .cinema-translation,
+body.light .ending-translation,
+body.light .bank-table .bank-translation,
+body.light .practice-table-translation,
+body.light .verb-example-en,
+body.light .question-card-translation{
+  color:var(--was-translation)!important;
+}
+
+/* Mobile keeps the same hierarchy at a smaller scale. */
+@media(max-width:700px){
+  .vocab-item{padding:13px 14px!important}
+  .vocab-de{font-size:15px!important;font-weight:750!important}
+  .vocab-en{font-size:11.5px!important;opacity:.78!important}
+  .similar-table td,.cinema-table td,.ending-table td,.bank-table td,
+  .verb-cinema-table td,.other-guide-table td,.practice-reference-table td,
+  .data-table td,.adj-reference-table td{line-height:1.5}
+  .similar-table td:first-child,.cinema-table td:first-child,
+  .ending-table td:first-child,.bank-table td:first-child,
+  .practice-reference-table td:first-child,.data-table td:first-child,
+  .adj-reference-table tbody td:first-child,.adj-reference-table tbody th:first-child,
+  .verb-forms,.verb-form,.other-guide-table td:first-child{font-weight:700!important}
+}
+</style>
+
+<style id="final-apple-vocab-typography">
+/* Final typography pass: Apple-like hierarchy across desktop and phone. */
+.vocab-de,
+.similar-table td:first-child,
+.cinema-table td:first-child,
+.ending-table td:first-child,
+.bank-table td:first-child,
+.verb-cinema-table td:first-child,
+.komposita-words-table td:first-child,
+.b1-table td:first-child{
+  font-weight:750;
+  letter-spacing:-.018em;
+  color:var(--text);
+}
+.vocab-en,
+.similar-table td:nth-child(2),
+.cinema-table td:nth-child(2),
+.ending-table td:nth-child(2),
+.bank-table td:nth-child(2),
+.verb-cinema-table td:nth-child(2),
+.komposita-words-table td:nth-child(2),
+.b1-table td:nth-child(2){
+  color:rgba(245,245,247,.58);
+  font-weight:400;
+}
+.similar-table td:nth-child(3),
+.cinema-table td:nth-child(3),
+.ending-table td:nth-child(3),
+.bank-table td:nth-child(3),
+.verb-cinema-table td:nth-child(3),
+.komposita-words-table td:nth-child(3),
+.b1-table td:nth-child(3),
+.verb-example-de,
+.komposita-example-de{
+  color:rgba(245,245,247,.78);
+  font-weight:400;
+}
+.similar-example-translation,
+.cinema-translation,
+.ending-translation,
+.bank-table .bank-translation,
+.verb-example-en,
+.komposita-example-en,
+.b1-translation,
+.practice-table-translation,
+.vocab-en{
+  color:rgba(245,245,247,.44);
+  font-weight:400;
+}
+body.light .vocab-de,
+body.light .similar-table td:first-child,
+body.light .cinema-table td:first-child,
+body.light .ending-table td:first-child,
+body.light .bank-table td:first-child,
+body.light .verb-cinema-table td:first-child,
+body.light .komposita-words-table td:first-child,
+body.light .b1-table td:first-child{color:#171b24!important}
+body.light .vocab-en,
+body.light .similar-table td:nth-child(2),
+body.light .cinema-table td:nth-child(2),
+body.light .ending-table td:nth-child(2),
+body.light .bank-table td:nth-child(2),
+body.light .verb-cinema-table td:nth-child(2),
+body.light .komposita-words-table td:nth-child(2),
+body.light .b1-table td:nth-child(2){color:#657084!important}
+body.light .similar-table td:nth-child(3),
+body.light .cinema-table td:nth-child(3),
+body.light .ending-table td:nth-child(3),
+body.light .bank-table td:nth-child(3),
+body.light .verb-cinema-table td:nth-child(3),
+body.light .komposita-words-table td:nth-child(3),
+body.light .b1-table td:nth-child(3),
+body.light .verb-example-de,
+body.light .komposita-example-de{color:#3d4655!important}
+body.light .similar-example-translation,
+body.light .cinema-translation,
+body.light .ending-translation,
+body.light .bank-table .bank-translation,
+body.light .verb-example-en,
+body.light .komposita-example-en,
+body.light .b1-translation,
+body.light .practice-table-translation{color:#7a8495!important}
+
+@media(max-width:700px){
+  /* Example sentences should be calm and phone-readable, not oversized. */
+  .similar-table td:nth-child(3),
+  .cinema-table td:nth-child(3),
+  .ending-table td:nth-child(3),
+  .bank-table td:nth-child(3),
+  .verb-cinema-table td:nth-child(3),
+  .b1-table td:nth-child(3),
+  .practice-reference-table td:nth-child(3),
+  .komposita-words-table td:nth-child(3){
+    font-size:13px!important;
+    line-height:1.52!important;
+  }
+  .similar-example-translation,
+  .cinema-translation,
+  .ending-translation,
+  .bank-table .bank-translation,
+  .verb-example-en,
+  .komposita-example-en,
+  .b1-translation,
+  .practice-table-translation,
+  .vocab-en{font-size:10.8px!important;line-height:1.42!important}
+  .vocab-de{font-size:14px!important;font-weight:750!important}
+
+  /* Komposita follows the same Was? row pattern: term + meaning + sound, then example. */
+  .komposita-words-table{display:block!important;width:100%!important;min-width:0!important}
+  .komposita-words-table thead{display:none!important}
+  .komposita-words-table tbody{display:block!important;width:100%!important}
+  .komposita-words-table tr{
+    display:grid!important;width:100%!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) 38px!important;
+    column-gap:8px!important;row-gap:0!important;
+    border-bottom:1px solid rgba(255,255,255,.085)!important;
+    padding:0!important;
+  }
+  .komposita-words-table tr:last-child{border-bottom:0!important}
+  .komposita-words-table td{
+    display:block!important;width:auto!important;min-width:0!important;
+    padding:10px 8px!important;border:0!important;white-space:normal!important;
+    overflow-wrap:anywhere!important;word-break:normal!important;
+  }
+  .komposita-words-table td:nth-child(1){grid-column:1;grid-row:1;padding-right:2px!important;white-space:normal!important}
+  .komposita-words-table td:nth-child(2){grid-column:2;grid-row:1;padding-left:2px!important;white-space:normal!important}
+  .komposita-words-table td:nth-child(3){grid-column:1 / 4;grid-row:2;padding-top:0!important}
+  .komposita-words-table td:nth-child(4){grid-column:3;grid-row:1 / span 2;padding:10px 5px!important;display:flex!important;align-items:flex-start!important;justify-content:center!important}
+  .komposita-speaker{width:32px!important;height:32px!important;min-width:32px!important}
+
+  /* The compound-word build/learning sheets use the same readable two-level rows. */
+  .komposita-build-table{display:block!important;width:100%!important;min-width:0!important}
+  .komposita-build-table thead{display:none!important}
+  .komposita-build-table tbody{display:block!important}
+  .komposita-build-table tr{display:grid!important;grid-template-columns:1fr 1fr!important;border-bottom:1px solid rgba(255,255,255,.085)!important}
+  .komposita-build-table tr:last-child{border-bottom:0!important}
+  .komposita-build-table td{display:block!important;min-width:0!important;padding:9px 8px!important;border:0!important;overflow-wrap:anywhere!important}
+  .komposita-build-table td:nth-child(1){grid-column:1;grid-row:1;font-weight:750!important}
+  .komposita-build-table td:nth-child(2){grid-column:2;grid-row:1}
+  .komposita-build-table td:nth-child(3){grid-column:1;grid-row:2;color:var(--muted)!important}
+  .komposita-build-table td:nth-child(4){grid-column:2;grid-row:2;color:var(--text-soft)!important}
+
+  /* Verbs: one clean Was?-style row per entry, no squeezed four-column layout. */
+  .verb-cinema-table{display:block!important;width:100%!important;min-width:0!important}
+  .verb-cinema-table thead{display:none!important}
+  .verb-cinema-table tbody{display:block!important;width:100%!important}
+  .verb-cinema-table tr{
+    display:grid!important;width:100%!important;
+    grid-template-columns:minmax(0,1fr) 38px!important;
+    column-gap:8px!important;row-gap:0!important;
+    border-bottom:1px solid rgba(255,255,255,.085)!important;
+  }
+  .verb-cinema-table tr:last-child{border-bottom:0!important}
+  .verb-cinema-table td{
+    display:block!important;width:auto!important;min-width:0!important;
+    padding:10px 8px!important;border:0!important;overflow-wrap:anywhere!important;
+  }
+  .verb-cinema-table td:nth-child(1){grid-column:1;grid-row:1;padding-right:0!important;white-space:normal!important}
+  .verb-cinema-table td:nth-child(2){grid-column:1;grid-row:2;padding-top:0!important}
+  .verb-cinema-table td:nth-child(3){grid-column:1;grid-row:3;padding-top:0!important;font-size:13px!important;line-height:1.52!important}
+  .verb-cinema-table td:nth-child(4){grid-column:2;grid-row:1 / span 3;padding:10px 2px!important;display:flex!important;align-items:flex-start!important;justify-content:center!important}
+  .verb-cinema-table .verb-forms{font-size:14px!important;line-height:1.45!important;gap:5px!important;white-space:normal!important}
+  .verb-cinema-table .verb-form,.verb-cinema-table .verb-forms strong,.verb-cinema-table .verb-perfekt strong{white-space:normal!important}
+  .verb-cinema-table .verb-meaning{font-size:10.8px!important;line-height:1.42!important}
+  .verb-cinema-table .verb-example-en{font-size:10.8px!important}
+  .verb-cinema-table .cinema-speaker{width:32px!important;height:32px!important;min-width:32px!important}
+}
+</style>
+
+
+<style id="final-german-entry-emphasis">
+/* Universal German-entry hierarchy.
+   Ordinary vocabulary entries are bold; specialised Komposita/Verbs keep
+   their intentional partial emphasis instead of becoming fully bold. */
+.vocab-de,
+.similar-table td:first-child,
+.cinema-table td:first-child,
+.ending-table td:first-child,
+.bank-table td:first-child,
+.b1-table td:first-child,
+.practice-reference-table td:first-child,
+.goethe-a1a2-host .cinema-table td:first-child,
+.adj-reference-table tbody td:first-child,
+.other-guide-table td:first-child,
+.comparison-item strong {
+  font-weight:750!important;
+  color:var(--text)!important;
+}
+
+/* Komposita: only the final/root component is bold, matching the source markup. */
+.komposita-words-table td:first-child {
+  font-weight:400!important;
+  color:var(--text)!important;
+}
+.komposita-words-table td:first-child .komposita-root {
+  font-weight:800!important;
+  color:inherit!important;
+}
+
+/* Verbs: do not bold the whole form; preserve the existing bold <strong>
+   endings/auxiliary markup inside each form. */
+.verb-cinema-table td:first-child,
+.verb-cinema-table .verb-forms,
+.verb-cinema-table .verb-form,
+.verb-cinema-table .verb-perfekt {
+  font-weight:400!important;
+  color:var(--text)!important;
+}
+.verb-cinema-table .verb-forms strong,
+.verb-cinema-table .verb-form strong,
+.verb-cinema-table .verb-perfekt strong {
+  font-weight:800!important;
+  color:inherit!important;
+}
+
+body.light .vocab-de,
+body.light .similar-table td:first-child,
+body.light .cinema-table td:first-child,
+body.light .ending-table td:first-child,
+body.light .bank-table td:first-child,
+body.light .b1-table td:first-child,
+body.light .practice-reference-table td:first-child,
+body.light .goethe-a1a2-host .cinema-table td:first-child,
+body.light .adj-reference-table tbody td:first-child,
+body.light .other-guide-table td:first-child,
+body.light .comparison-item strong {
+  color:#171b24!important;
+}
+body.light .komposita-words-table td:first-child,
+body.light .verb-cinema-table td:first-child,
+body.light .verb-cinema-table .verb-forms,
+body.light .verb-cinema-table .verb-form,
+body.light .verb-cinema-table .verb-perfekt {
+  color:#171b24!important;
+}
+
+@media(max-width:700px){
+  .vocab-de,
+  .similar-table td:first-child,
+  .cinema-table td:first-child,
+  .ending-table td:first-child,
+  .bank-table td:first-child,
+  .b1-table td:first-child,
+  .practice-reference-table td:first-child,
+  .goethe-a1a2-host .cinema-table td:first-child,
+  .adj-reference-table tbody td:first-child,
+  .other-guide-table td:first-child,
+  .comparison-item strong {font-weight:750!important;}
+  .komposita-words-table td:first-child{font-weight:400!important;}
+  .komposita-words-table td:first-child .komposita-root{font-weight:800!important;}
+  .verb-cinema-table td:first-child,
+  .verb-cinema-table .verb-forms,
+  .verb-cinema-table .verb-form,
+  .verb-cinema-table .verb-perfekt{font-weight:400!important;}
+  .verb-cinema-table .verb-forms strong,
+  .verb-cinema-table .verb-form strong,
+  .verb-cinema-table .verb-perfekt strong{font-weight:800!important;}
+}
+</style>
+<style id="universal-german-vocabulary-final-fix">
+/* Universal entry hierarchy: all ordinary German vocabulary terms are bold.
+   Komposita and Verbs are deliberately excluded so their existing partial
+   emphasis remains untouched. */
+.vocab-de,
+.similar-table td:first-child,
+.cinema-table td:first-child,
+.ending-table td:first-child,
+.bank-table td:first-child,
+.b1-table td:first-child,
+.practice-reference-table td:first-child,
+.data-table td:first-child,
+.goethe-a1a2-host .cinema-table td:first-child,
+.adj-reference-table tbody td:first-child,
+.other-guide-table td:first-child {
+  font-weight:750 !important;
+  color:var(--text) !important;
+}
+
+/* Komposita: preserve intentional partial bold on the root only. */
+.komposita-words-table td:first-child {
+  font-weight:400 !important;
+  color:var(--text) !important;
+}
+.komposita-words-table td:first-child .komposita-root {
+  font-weight:800 !important;
+}
+
+/* Verbs: preserve the source's partial <strong> emphasis; never bold the
+   entire verb entry. */
+.verb-cinema-table td:first-child,
+.verb-cinema-table .verb-forms,
+.verb-cinema-table .verb-form,
+.verb-cinema-table .verb-perfekt {
+  font-weight:400 !important;
+  color:var(--text) !important;
+}
+.verb-cinema-table .verb-forms strong,
+.verb-cinema-table .verb-form strong,
+.verb-cinema-table .verb-perfekt strong {
+  font-weight:800 !important;
+}
+
+body.light .vocab-de,
+body.light .similar-table td:first-child,
+body.light .cinema-table td:first-child,
+body.light .ending-table td:first-child,
+body.light .bank-table td:first-child,
+body.light .b1-table td:first-child,
+body.light .practice-reference-table td:first-child,
+body.light .goethe-a1a2-host .cinema-table td:first-child,
+body.light .adj-reference-table tbody td:first-child,
+body.light .other-guide-table td:first-child {
+  color:#171b24 !important;
+}
+body.light .komposita-words-table td:first-child,
+body.light .verb-cinema-table td:first-child,
+body.light .verb-cinema-table .verb-forms,
+body.light .verb-cinema-table .verb-form,
+body.light .verb-cinema-table .verb-perfekt {
+  color:#171b24 !important;
+}
+
+/* Never split a single German vocabulary word across multiple lines on phones.
+   Wrapping may still occur naturally around spaces in multi-word entries. */
+@media (max-width:700px) {
+  .vocab-de,
+  .similar-table td:first-child,
+  .cinema-table td:first-child,
+  .ending-table td:first-child,
+  .bank-table td:first-child,
+  .b1-table td:first-child,
+  .practice-reference-table td:first-child,
+  .data-table td:first-child,
+  .goethe-a1a2-host .cinema-table td:first-child,
+  .adj-reference-table tbody td:first-child,
+  .other-guide-table td:first-child,
+  .komposita-words-table td:first-child,
+  .verb-cinema-table td:first-child {
+    word-break:keep-all !important;
+    overflow-wrap:normal !important;
+    hyphens:none !important;
+  }
+
+  .vocab-de,
+  .similar-table td:first-child,
+  .cinema-table td:first-child,
+  .ending-table td:first-child,
+  .bank-table td:first-child,
+  .b1-table td:first-child,
+  .practice-reference-table td:first-child,
+  .data-table td:first-child,
+  .goethe-a1a2-host .cinema-table td:first-child,
+  .adj-reference-table tbody td:first-child,
+  .other-guide-table td:first-child,
+  .komposita-words-table td:first-child,
+  .verb-cinema-table td:first-child {
+    font-size:13.5px !important;
+    letter-spacing:-.018em !important;
+  }
+}
+</style>
+
+
+<style id="vokabular-requested-fixes">
+/* One small, authoritative layer for the two requested corrections. */
+
+/* 1. Ordinary vocabulary: German entry = bold.
+   Deliberate exceptions: Endings, Komposita and Verbs. */
+.detail table:not(.verb-table):not(.verb-cinema-table):not(.komposita-words-table):not(.komposita-build-table):not(.ending-table) tbody td:first-child,
+.vocab-item .vocab-de {
+  font-weight:700 !important;
+  color:var(--text) !important;
+}
+
+/* Endings: the whole word stays regular; only renderEndingWord()'s
+   <strong> ending remains bold. */
+.ending-table tbody td:first-child,
+.ending-table tbody td:first-child * {
+  font-weight:400 !important;
+}
+.ending-table tbody td:first-child strong,
+.ending-table tbody td:first-child strong * {
+  font-weight:800 !important;
+}
+
+/* Komposita: return to the original regular treatment. */
+.komposita-words-table tbody td:first-child,
+.komposita-build-table tbody td:first-child {
+  font-weight:400 !important;
+  font-size:13px !important;
+  color:var(--text) !important;
+}
+.komposita-words-table tbody td:first-child .komposita-root {
+  font-weight:400 !important;
+}
+
+/* Verbs: return to the original regular treatment. Existing teaching
+   <strong> fragments remain bold. */
+.verb-cinema-table .verb-forms,
+.verb-cinema-table .verb-form,
+.verb-cinema-table .verb-perfekt,
+.verb-cinema-table tbody td:first-child {
+  font-weight:400 !important;
+  font-size:13px !important;
+  color:var(--text) !important;
+}
+.verb-cinema-table .verb-forms strong,
+.verb-cinema-table .verb-form strong,
+.verb-cinema-table .verb-perfekt strong {
+  font-weight:800 !important;
+}
+
+/* Never split the German entry or its meaning into extra lines on phone.
+   Let the row grow horizontally when necessary instead of forcing an
+   artificial wrap. */
+@media (max-width:700px){
+  .similar-table-wrap,
+  .cinema-table-wrap,
+  .ending-table-wrap,
+  .bank-table-wrap,
+  .table-wrap,
+  .verb-table-wrap {
+    overflow-x:auto !important;
+    overflow-y:visible !important;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .similar-table,
+  .cinema-table,
+  .ending-table,
+  .bank-table,
+  .data-table,
+  .b1-table,
+  .practice-reference-table,
+  .verb-cinema-table,
+  .komposita-words-table {
+    width:max-content !important;
+    min-width:100% !important;
+    max-width:none !important;
+    table-layout:auto !important;
+  }
+
+  .similar-table tr,
+  .cinema-table tr,
+  .ending-table tr,
+  .bank-table tr,
+  .data-table tr,
+  .b1-table tr,
+  .practice-reference-table tr,
+  .verb-cinema-table tr,
+  .komposita-words-table tr {
+    display:grid !important;
+    grid-template-columns:max-content max-content 36px !important;
+    column-gap:14px !important;
+    row-gap:0 !important;
+    width:max-content !important;
+    min-width:100% !important;
+  }
+
+  .similar-table td:first-child,
+  .cinema-table td:first-child,
+  .ending-table td:first-child,
+  .bank-table td:first-child,
+  .data-table td:first-child,
+  .b1-table td:first-child,
+  .practice-reference-table td:first-child,
+  .verb-cinema-table td:first-child,
+  .komposita-words-table td:first-child {
+    grid-column:1 !important;
+    grid-row:1 !important;
+    width:max-content !important;
+    min-width:max-content !important;
+    max-width:none !important;
+    white-space:nowrap !important;
+    overflow:visible !important;
+    text-overflow:clip !important;
+    overflow-wrap:normal !important;
+    word-break:normal !important;
+    hyphens:none !important;
+  }
+
+  .similar-table td:nth-child(2),
+  .cinema-table td:nth-child(2),
+  .ending-table td:nth-child(2),
+  .bank-table td:nth-child(2),
+  .data-table td:nth-child(2),
+  .b1-table td:nth-child(2),
+  .practice-reference-table td:nth-child(2),
+  .verb-cinema-table td:nth-child(2),
+  .komposita-words-table td:nth-child(2) {
+    grid-column:2 !important;
+    grid-row:1 !important;
+    width:max-content !important;
+    min-width:max-content !important;
+    max-width:none !important;
+    white-space:nowrap !important;
+    overflow:visible !important;
+    text-overflow:clip !important;
+    overflow-wrap:normal !important;
+    word-break:normal !important;
+    hyphens:none !important;
+    padding-left:0 !important;
+  }
+
+  .similar-table td:nth-child(3),
+  .cinema-table td:nth-child(3),
+  .ending-table td:nth-child(3),
+  .bank-table td:nth-child(3),
+  .data-table td:nth-child(3),
+  .b1-table td:nth-child(3),
+  .practice-reference-table td:nth-child(3),
+  .verb-cinema-table td:nth-child(3),
+  .komposita-words-table td:nth-child(3) {
+    grid-column:1 / -1 !important;
+    grid-row:2 !important;
+    width:auto !important;
+    min-width:0 !important;
+    max-width:none !important;
+    overflow-wrap:normal !important;
+    word-break:normal !important;
+    hyphens:none !important;
+    padding-top:3px !important;
+  }
+
+  .similar-table td:nth-child(4),
+  .cinema-table td:nth-child(4),
+  .ending-table td:nth-child(4),
+  .bank-table td:nth-child(4),
+  .data-table td:nth-child(4),
+  .b1-table td:nth-child(4),
+  .practice-reference-table td:nth-child(4),
+  .verb-cinema-table td:nth-child(4),
+  .komposita-words-table td:nth-child(4) {
+    grid-column:3 !important;
+    grid-row:1 / span 2 !important;
+    width:36px !important;
+    min-width:36px !important;
+    max-width:36px !important;
+    display:flex !important;
+    align-items:flex-start !important;
+    justify-content:flex-end !important;
+    padding:8px 0 0 !important;
+  }
+
+  /* Keep the same visual separation on phone without moving the meaning
+     under the word. */
+  .similar-table td:nth-child(2),
+  .cinema-table td:nth-child(2),
+  .ending-table td:nth-child(2),
+  .bank-table td:nth-child(2),
+  .data-table td:nth-child(2),
+  .b1-table td:nth-child(2),
+  .practice-reference-table td:nth-child(2) {
+    padding-left:0 !important;
+  }
+
+  .verb-cinema-table .verb-forms,
+  .verb-cinema-table .verb-form,
+  .verb-cinema-table .verb-perfekt {
+    font-size:13px !important;
+    font-weight:400 !important;
+    white-space:nowrap !important;
+    overflow:visible !important;
+    text-overflow:clip !important;
+  }
+  .verb-cinema-table .verb-forms strong,
+  .verb-cinema-table .verb-form strong,
+  .verb-cinema-table .verb-perfekt strong {font-weight:800 !important;}
+
+  .komposita-words-table tbody td:first-child,
+  .komposita-build-table tbody td:first-child {
+    font-size:13px !important;
+    font-weight:400 !important;
+    white-space:nowrap !important;
+  }
+}
+</style>
+
+
+<style id="final-clean-vocab-mobile-fix">
+/* FINAL CLEAN VOCAB BEHAVIOUR — one small layer, no content changes. */
+
+/* Desktop: ordinary vocabulary terms are bold. Verbs/Komposita/Endings keep their teaching-specific regular treatment. */
+.detail table:not(.verb-table):not(.verb-cinema-table):not(.komposita-words-table):not(.komposita-build-table):not(.ending-table) tbody td:first-child,
+.vocab-item .vocab-de,
+.b1-table tbody td:first-child,
+.practice-reference-table tbody td:first-child {
+  font-weight:700 !important;
+}
+
+/* Endings + Komposita: same normal entry size; only the teaching suffix/root is bold. */
+.ending-table tbody td:first-child,
+.ending-table tbody td:first-child *,
+.komposita-words-table tbody td:first-child,
+.komposita-words-table tbody td:first-child * {
+  font-size:13px !important;
+  font-weight:400 !important;
+  color:var(--text) !important;
+}
+.ending-table tbody td:first-child strong,
+.komposita-words-table tbody td:first-child .komposita-root {
+  font-weight:800 !important;
+}
+
+/* Verbs stay exactly in the regular hierarchy; only source <strong> fragments are bold. */
+.verb-cinema-table tbody td:first-child,
+.verb-cinema-table .verb-forms,
+.verb-cinema-table .verb-form,
+.verb-cinema-table .verb-perfekt {
+  font-size:13px !important;
+  font-weight:400 !important;
+  color:var(--text) !important;
+}
+.verb-cinema-table .verb-forms strong,
+.verb-cinema-table .verb-form strong,
+.verb-cinema-table .verb-perfekt strong {font-weight:800 !important;}
+
+@media (max-width:700px){
+  /* No horizontal content scrollbar for vocabulary/detail tables. */
+  .detail,
+  .detail .table-wrap,
+  .detail .ending-table-wrap,
+  .detail .similar-table-wrap,
+  .detail .cinema-table-wrap,
+  .detail .bank-table-wrap,
+  .detail .verb-table-wrap,
+  .detail .komposita-table-wrap,
+  .detail .practice-reference-table-wrap {
+    overflow-x:hidden !important;
+    max-width:100% !important;
+  }
+
+  /* One consistent mobile vocabulary row:
+     Word + Meaning (each stays intact and wraps only as a whole unit)
+     Example below; audio hidden. */
+  .detail .similar-table,
+  .detail .cinema-table,
+  .detail .ending-table,
+  .detail .bank-table,
+  .detail .data-table,
+  .detail .b1-table,
+  .detail .practice-reference-table,
+  .detail .komposita-words-table,
+  .detail .verb-cinema-table {
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    table-layout:auto !important;
+  }
+
+  .detail .similar-table thead,
+  .detail .cinema-table thead,
+  .detail .ending-table thead,
+  .detail .bank-table thead,
+  .detail .data-table thead,
+  .detail .b1-table thead,
+  .detail .practice-reference-table thead,
+  .detail .komposita-words-table thead,
+  .detail .verb-cinema-table thead {display:none !important;}
+
+  .detail .similar-table tbody,
+  .detail .cinema-table tbody,
+  .detail .ending-table tbody,
+  .detail .bank-table tbody,
+  .detail .data-table tbody,
+  .detail .b1-table tbody,
+  .detail .practice-reference-table tbody,
+  .detail .komposita-words-table tbody,
+  .detail .verb-cinema-table tbody {display:block !important; width:100% !important;}
+
+  .detail .similar-table tr,
+  .detail .cinema-table tr,
+  .detail .ending-table tr,
+  .detail .bank-table tr,
+  .detail .data-table tr,
+  .detail .b1-table tr,
+  .detail .practice-reference-table tr,
+  .detail .komposita-words-table tr,
+  .detail .verb-cinema-table tr {
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    border-bottom:1px solid rgba(255,255,255,.08) !important;
+  }
+
+  .detail .similar-table tr:last-child,
+  .detail .cinema-table tr:last-child,
+  .detail .ending-table tr:last-child,
+  .detail .bank-table tr:last-child,
+  .detail .data-table tr:last-child,
+  .detail .b1-table tr:last-child,
+  .detail .practice-reference-table tr:last-child,
+  .detail .komposita-words-table tr:last-child,
+  .detail .verb-cinema-table tr:last-child {border-bottom:0 !important;}
+
+  /* Word and meaning are inline-blocks: they may move to the next line only as whole units. */
+  .detail .similar-table td:first-child,
+  .detail .cinema-table td:first-child,
+  .detail .ending-table td:first-child,
+  .detail .bank-table td:first-child,
+  .detail .data-table td:first-child,
+  .detail .b1-table td:first-child,
+  .detail .practice-reference-table td:first-child,
+  .detail .komposita-words-table td:first-child,
+  .detail .verb-cinema-table td:first-child,
+  .detail .similar-table td:nth-child(2),
+  .detail .cinema-table td:nth-child(2),
+  .detail .ending-table td:nth-child(2),
+  .detail .bank-table td:nth-child(2),
+  .detail .data-table td:nth-child(2),
+  .detail .b1-table td:nth-child(2),
+  .detail .practice-reference-table td:nth-child(2),
+  .detail .komposita-words-table td:nth-child(2),
+  .detail .verb-cinema-table td:nth-child(2) {
+    display:inline-block !important;
+    vertical-align:top !important;
+    width:auto !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    white-space:nowrap !important;
+    word-break:keep-all !important;
+    overflow-wrap:normal !important;
+    hyphens:none !important;
+    padding:10px 0 0 !important;
+    border:0 !important;
+  }
+
+  .detail .similar-table td:first-child,
+  .detail .cinema-table td:first-child,
+  .detail .ending-table td:first-child,
+  .detail .bank-table td:first-child,
+  .detail .data-table td:first-child,
+  .detail .b1-table td:first-child,
+  .detail .practice-reference-table td:first-child,
+  .detail .komposita-words-table td:first-child,
+  .detail .verb-cinema-table td:first-child {
+    margin-right:14px !important;
+  }
+
+  /* Meaning is a complete unit; it can move below the word, but never split internally. */
+  .detail .similar-table td:nth-child(2),
+  .detail .cinema-table td:nth-child(2),
+  .detail .ending-table td:nth-child(2),
+  .detail .bank-table td:nth-child(2),
+  .detail .data-table td:nth-child(2),
+  .detail .b1-table td:nth-child(2),
+  .detail .practice-reference-table td:nth-child(2),
+  .detail .komposita-words-table td:nth-child(2),
+  .detail .verb-cinema-table td:nth-child(2) {
+    color:var(--muted) !important;
+  }
+
+  /* Example is full-width and is the only text allowed to wrap naturally. */
+  .detail .similar-table td:nth-child(3),
+  .detail .cinema-table td:nth-child(3),
+  .detail .ending-table td:nth-child(3),
+  .detail .bank-table td:nth-child(3),
+  .detail .data-table td:nth-child(3),
+  .detail .b1-table td:nth-child(3),
+  .detail .practice-reference-table td:nth-child(3),
+  .detail .komposita-words-table td:nth-child(3),
+  .detail .verb-cinema-table td:nth-child(3) {
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    padding:5px 0 11px !important;
+    border:0 !important;
+    white-space:normal !important;
+    word-break:normal !important;
+    overflow-wrap:normal !important;
+    hyphens:none !important;
+  }
+
+  /* Audio icons disappear on phone; words become the speaking target. */
+  .detail .similar-table td:nth-child(4),
+  .detail .cinema-table td:nth-child(4),
+  .detail .ending-table td:nth-child(4),
+  .detail .bank-table td:nth-child(4),
+  .detail .data-table td:nth-child(4),
+  .detail .b1-table td:nth-child(4),
+  .detail .practice-reference-table td:nth-child(4),
+  .detail .komposita-words-table td:nth-child(4),
+  .detail .verb-cinema-table td:nth-child(4) {display:none !important;}
+
+  /* Preserve the requested special weighting on phone too. */
+  .detail .ending-table td:first-child,
+  .detail .ending-table td:first-child *,
+  .detail .komposita-words-table td:first-child,
+  .detail .komposita-words-table td:first-child * {
+    font-weight:400 !important;
+    font-size:13px !important;
+  }
+  .detail .ending-table td:first-child strong,
+  .detail .komposita-words-table td:first-child .komposita-root {font-weight:800 !important;}
+  .detail .verb-cinema-table td:first-child,
+  .detail .verb-cinema-table .verb-forms,
+  .detail .verb-cinema-table .verb-form,
+  .detail .verb-cinema-table .verb-perfekt {font-weight:400 !important;font-size:13px !important;}
+  .detail .verb-cinema-table .verb-forms strong,
+  .detail .verb-cinema-table .verb-form strong,
+  .detail .verb-cinema-table .verb-perfekt strong {font-weight:800 !important;}
+
+  /* Word click target */
+  .mobile-speak-word {cursor:pointer !important;}
+  .mobile-speak-word:active {opacity:.72;}
+
+  /* Matching practice: no icon; every clicked card speaks its German pair. */
+  .practice-card {touch-action:manipulation;}
+}
+</style>
+
+<script id="final-clean-vocab-mobile-speech">
+(function(){
+  function speakWord(text){
+    if(!text || !('speechSynthesis' in window)) return;
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(String(text).trim());
+    u.lang='de-DE';
+    u.rate=.9;
+    speechSynthesis.speak(u);
+  }
+
+  function wireVocabularyWordClicks(root){
+    const scope=root||document;
+    scope.querySelectorAll('.similar-table td:first-child,.cinema-table td:first-child,.ending-table td:first-child,.bank-table td:first-child,.data-table td:first-child,.b1-table td:first-child,.practice-reference-table td:first-child,.komposita-words-table td:first-child').forEach(cell=>{
+      if(cell.dataset.mobileSpeechBound==='1') return;
+      cell.dataset.mobileSpeechBound='1';
+      cell.classList.add('mobile-speak-word');
+      cell.addEventListener('click',()=>{
+        const copy=cell.cloneNode(true);
+        copy.querySelectorAll('.ending-root,.ending-en,.ending-translation,.komposita-root,.similar-example-translation').forEach(x=>x.remove());
+        speakWord(copy.textContent.trim());
+      });
+    });
+  }
+
+  function wire(){wireVocabularyWordClicks(document);}
+  wire();
+  new MutationObserver(wire).observe(document.documentElement,{subtree:true,childList:true});
+})();
+</script>
+
+<style id="phone-content-comfort-fix">
+@media (max-width:700px){
+  /* Keep every vocabulary entry comfortably inside its card. */
+  .detail .similar-table,
+  .detail .cinema-table,
+  .detail .ending-table,
+  .detail .bank-table,
+  .detail .data-table,
+  .detail .b1-table,
+  .detail .practice-reference-table,
+  .detail .komposita-words-table,
+  .detail .verb-cinema-table{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    overflow:visible!important;
+  }
+
+  .detail .similar-table tbody,
+  .detail .cinema-table tbody,
+  .detail .ending-table tbody,
+  .detail .bank-table tbody,
+  .detail .data-table tbody,
+  .detail .b1-table tbody,
+  .detail .practice-reference-table tbody,
+  .detail .komposita-words-table tbody,
+  .detail .verb-cinema-table tbody{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+  }
+
+  /* Each row is a compact card. The word and English meaning sit side-by-side
+     whenever they fit; otherwise the meaning moves as one intact unit. */
+  .detail .similar-table tr,
+  .detail .cinema-table tr,
+  .detail .ending-table tr,
+  .detail .bank-table tr,
+  .detail .data-table tr,
+  .detail .b1-table tr,
+  .detail .practice-reference-table tr,
+  .detail .komposita-words-table tr,
+  .detail .verb-cinema-table tr{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    align-items:baseline!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    overflow:visible!important;
+    padding:0!important;
+    margin:0!important;
+  }
+
+  .detail .similar-table td:first-child,
+  .detail .cinema-table td:first-child,
+  .detail .ending-table td:first-child,
+  .detail .bank-table td:first-child,
+  .detail .data-table td:first-child,
+  .detail .b1-table td:first-child,
+  .detail .practice-reference-table td:first-child,
+  .detail .komposita-words-table td:first-child,
+  .detail .verb-cinema-table td:first-child,
+  .detail .similar-table td:nth-child(2),
+  .detail .cinema-table td:nth-child(2),
+  .detail .ending-table td:nth-child(2),
+  .detail .bank-table td:nth-child(2),
+  .detail .data-table td:nth-child(2),
+  .detail .b1-table td:nth-child(2),
+  .detail .practice-reference-table td:nth-child(2),
+  .detail .komposita-words-table td:nth-child(2),
+  .detail .verb-cinema-table td:nth-child(2){
+    display:block!important;
+    flex:0 0 auto!important;
+    width:auto!important;
+    max-width:100%!important;
+    min-width:0!important;
+    padding:12px 0 0!important;
+    margin:0!important;
+    border:0!important;
+    vertical-align:baseline!important;
+    white-space:nowrap!important;
+    word-break:keep-all!important;
+    overflow-wrap:normal!important;
+    hyphens:none!important;
+  }
+
+  /* Give the word first position and a comfortable visual gap before meaning. */
+  .detail .similar-table td:first-child,
+  .detail .cinema-table td:first-child,
+  .detail .ending-table td:first-child,
+  .detail .bank-table td:first-child,
+  .detail .data-table td:first-child,
+  .detail .b1-table td:first-child,
+  .detail .practice-reference-table td:first-child,
+  .detail .komposita-words-table td:first-child,
+  .detail .verb-cinema-table td:first-child{
+    margin-right:18px!important;
+  }
+
+  /* Never split the English meaning internally; if it cannot fit beside the
+     German word it wraps to the next line as one complete unit. */
+  .detail .similar-table td:nth-child(2),
+  .detail .cinema-table td:nth-child(2),
+  .detail .ending-table td:nth-child(2),
+  .detail .bank-table td:nth-child(2),
+  .detail .data-table td:nth-child(2),
+  .detail .b1-table td:nth-child(2),
+  .detail .practice-reference-table td:nth-child(2),
+  .detail .komposita-words-table td:nth-child(2),
+  .detail .verb-cinema-table td:nth-child(2){
+    margin-right:0!important;
+  }
+
+  /* Sentence is the only content allowed to use multiple lines. */
+  .detail .similar-table td:nth-child(3),
+  .detail .cinema-table td:nth-child(3),
+  .detail .ending-table td:nth-child(3),
+  .detail .bank-table td:nth-child(3),
+  .detail .data-table td:nth-child(3),
+  .detail .b1-table td:nth-child(3),
+  .detail .practice-reference-table td:nth-child(3),
+  .detail .komposita-words-table td:nth-child(3),
+  .detail .verb-cinema-table td:nth-child(3){
+    display:block!important;
+    flex:0 0 100%!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    padding:6px 0 13px!important;
+    margin:0!important;
+    border:0!important;
+    white-space:normal!important;
+    word-break:normal!important;
+    overflow-wrap:normal!important;
+    hyphens:none!important;
+  }
+
+  /* Remove any remaining horizontal overflow from the content surface. */
+  .detail,
+  .detail .table-wrap,
+  .detail .ending-table-wrap,
+  .detail .similar-table-wrap,
+  .detail .cinema-table-wrap,
+  .detail .bank-table-wrap,
+  .detail .verb-table-wrap,
+  .detail .komposita-table-wrap,
+  .detail .practice-reference-table-wrap{
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:hidden!important;
+    overflow-y:visible!important;
+  }
+}
+
+@media (max-width:390px){
+  /* Slightly tighter only on very narrow phones, while preserving intact units. */
+  .detail .similar-table td:first-child,
+  .detail .cinema-table td:first-child,
+  .detail .ending-table td:first-child,
+  .detail .bank-table td:first-child,
+  .detail .data-table td:first-child,
+  .detail .b1-table td:first-child,
+  .detail .practice-reference-table td:first-child,
+  .detail .komposita-words-table td:first-child,
+  .detail .verb-cinema-table td:first-child{margin-right:14px!important;}
+}
+  /* Final phone breathing room: keep the content surface comfortably away from the screen edges. */
+@media (max-width:700px){
+  .detail{
+    width:calc(100% - 20px)!important;
+    max-width:calc(100% - 20px)!important;
+    margin-left:10px!important;
+    margin-right:10px!important;
+  }
+}
+</style>
+
+<style id="phone-table-inner-inset-fix">
+@media (max-width:700px){
+  /* Give the actual table row content a comfortable inset from the card edges. */
+  .detail .similar-table tr,
+  .detail .cinema-table tr,
+  .detail .ending-table tr,
+  .detail .bank-table tr,
+  .detail .data-table tr,
+  .detail .b1-table tr,
+  .detail .practice-reference-table tr,
+  .detail .komposita-words-table tr,
+  .detail .verb-cinema-table tr{
+    padding-left:14px!important;
+    padding-right:14px!important;
+  }
+}
+@media (max-width:390px){
+  .detail .similar-table tr,
+  .detail .cinema-table tr,
+  .detail .ending-table tr,
+  .detail .bank-table tr,
+  .detail .data-table tr,
+  .detail .b1-table tr,
+  .detail .practice-reference-table tr,
+  .detail .komposita-words-table tr,
+  .detail .verb-cinema-table tr{
+    padding-left:12px!important;
+    padding-right:12px!important;
+  }
+}
+</style>
+
 </body>
 </html>
