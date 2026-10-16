@@ -3929,6 +3929,72 @@ body:not(.light) .vocab-item{border-color:var(--entry-dark-line)!important;backg
 
 
 
+
+<style id="vocabulary-global-search-style">
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+/* Compact command-style search. The rest of the page's visual system stays untouched. */
+.top-area .container{position:relative}
+.level-pills{padding-left:48px;padding-right:48px}
+.search-trigger{
+  position:absolute;right:0;top:50%;transform:translateY(-50%);
+  display:inline-flex;align-items:center;justify-content:center;
+  width:38px;height:38px;padding:0;border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.045);color:var(--muted);
+  transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease;
+}
+.search-trigger:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.22);color:var(--text);transform:translateY(-50%) translateY(-1px)}
+.search-trigger svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.search-trigger:focus-visible,.vocab-search-close:focus-visible,.vocab-search-result:focus-visible,.vocab-search-more:focus-visible{outline:2px solid #8ab4f8;outline-offset:3px}
+body.light .search-trigger{background:rgba(20,24,35,.04);border-color:rgba(20,24,35,.12);color:#5f6979}
+body.light .search-trigger:hover{background:rgba(20,24,35,.08);border-color:rgba(20,24,35,.20);color:#171b24}
+.vocab-search-overlay{position:fixed;inset:0;z-index:300;display:flex;justify-content:center;align-items:flex-start;padding:11vh 20px 20px;}
+.vocab-search-overlay[hidden]{display:none!important}
+.vocab-search-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.58);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%)}
+body.light .vocab-search-backdrop{background:rgba(255,255,255,.58)}
+.vocab-search-panel{position:relative;width:min(720px,100%);max-height:min(78vh,760px);display:flex;flex-direction:column;overflow:hidden;border-radius:22px;border:1px solid rgba(255,255,255,.13);background:rgba(17,19,26,.97);box-shadow:0 30px 90px rgba(0,0,0,.48);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);animation:vocabSearchSlide .2s cubic-bezier(.22,1,.36,1)}
+body.light .vocab-search-panel{background:rgba(255,255,255,.98);border-color:rgba(20,24,35,.11);box-shadow:0 30px 90px rgba(25,35,55,.20)}
+.vocab-search-input-wrap{display:flex;align-items:center;gap:12px;padding:15px 17px;border-bottom:1px solid rgba(255,255,255,.08)}
+body.light .vocab-search-input-wrap{border-bottom-color:rgba(20,24,35,.08)}
+.vocab-search-input-icon{flex:0 0 auto;width:20px;height:20px;color:var(--dim);fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+#vocabularySearchInput{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--text);font:400 16px/1.4 Inter,sans-serif;appearance:none;-webkit-appearance:none}
+#vocabularySearchInput::placeholder{color:var(--dim);opacity:1}
+#vocabularySearchInput::-webkit-search-cancel-button{display:none}
+.vocab-search-close{flex:0 0 32px;width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:50%;background:rgba(255,255,255,.06);color:var(--muted);font-size:21px;line-height:1;cursor:pointer}
+.vocab-search-close:hover{background:rgba(255,255,255,.13);color:var(--text)}
+body.light .vocab-search-close{background:rgba(20,24,35,.05);color:#5f6979}
+body.light .vocab-search-close:hover{background:rgba(20,24,35,.10);color:#171b24}
+.vocab-search-status{padding:10px 20px 4px;color:var(--dim);font-size:10.5px;line-height:1.45}
+.vocab-search-results{flex:1;min-height:54px;overflow-y:auto;padding:3px 0 8px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.15) transparent}
+.vocab-search-results::-webkit-scrollbar{width:6px}.vocab-search-results::-webkit-scrollbar-thumb{background:rgba(255,255,255,.13);border-radius:99px}
+.vocab-search-result{display:block;width:100%;padding:11px 20px;text-align:left;border:0;border-left:2px solid transparent;background:transparent;color:inherit;font:inherit;cursor:pointer;transition:background .12s ease,border-color .12s ease}
+.vocab-search-result:hover,.vocab-search-result.is-active{background:rgba(255,255,255,.05);border-left-color:rgba(255,255,255,.55)}
+body.light .vocab-search-result:hover,body.light .vocab-search-result.is-active{background:rgba(20,24,35,.04);border-left-color:rgba(0,0,0,.42)}
+.vocab-search-result-head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.vocab-search-result-de{font-size:14.5px;font-weight:750;letter-spacing:-.012em;color:var(--text);overflow-wrap:anywhere}
+.vocab-search-result-en{font-size:12.5px;color:var(--muted);font-weight:400;overflow-wrap:anywhere}
+.vocab-search-result-meta{display:block;margin-top:4px;color:var(--dim);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;line-height:1.45;overflow-wrap:anywhere}
+.vocab-search-result-sentence{display:-webkit-box;margin-top:5px;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;font-size:12px;line-height:1.5;color:var(--text-soft);overflow-wrap:anywhere}
+.vocab-search-result-translation{display:-webkit-box;margin-top:2px;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:1;font-size:11px;line-height:1.45;color:var(--muted);overflow-wrap:anywhere}
+.vocab-search-result mark{border-radius:3px;background:rgba(96,165,250,.25);color:inherit;padding:0 1px}
+body.light .vocab-search-result mark{background:rgba(96,165,250,.18)}
+.vocab-search-empty{padding:36px 20px;text-align:center;color:var(--dim);font-size:12.5px;line-height:1.6}
+.vocab-search-empty strong{color:var(--muted);font-weight:650}
+.vocab-search-more-wrap{display:flex;justify-content:center;padding:12px 18px 14px}
+.vocab-search-more{border:1px solid var(--line);border-radius:999px;background:var(--soft-panel);color:var(--text);padding:9px 14px;font-size:11px;font-weight:650;cursor:pointer}
+.vocab-search-more:hover{background:var(--soft-panel-hover)}
+.vocab-search-footer{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 14px;padding:10px 15px;border-top:1px solid rgba(255,255,255,.07);color:var(--dim);font-size:10px}
+body.light .vocab-search-footer{border-top-color:rgba(20,24,35,.07)}
+.vocab-search-footer kbd{display:inline-block;margin:0 2px;padding:1px 5px;border:1px solid rgba(255,255,255,.09);border-radius:5px;background:rgba(255,255,255,.07);color:var(--muted);font:10px 'Roboto Mono',monospace}
+body.light .vocab-search-footer kbd{border-color:rgba(20,24,35,.09);background:rgba(20,24,35,.05);color:#5f6979}
+.search-highlight{border-radius:8px;animation:vocabSearchHighlight 2.5s ease-out}
+@keyframes vocabSearchSlide{from{opacity:0;transform:translateY(-7px) scale(.987)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes vocabSearchHighlight{0%{background:rgba(96,165,250,.25);box-shadow:0 0 0 2px rgba(96,165,250,.18)}100%{background:transparent;box-shadow:none}}
+@media(max-width:700px){.level-pills{padding-left:43px;padding-right:43px}.search-trigger{width:34px;height:34px}.search-trigger svg{width:15px;height:15px}.vocab-search-overlay{padding:8vh 12px 12px}.vocab-search-panel{max-height:83vh;border-radius:20px}.vocab-search-input-wrap{padding:13px 14px}.vocab-search-result{padding:10px 15px}.vocab-search-result-de{font-size:14px}.vocab-search-footer{justify-content:space-around;gap:7px;padding:9px 10px}}
+@media(max-width:420px){.level-pills{padding-left:39px;padding-right:39px}.search-trigger{width:32px;height:32px}.vocab-search-overlay{padding:6vh 8px 8px}}
+@media(prefers-reduced-motion:reduce){.vocab-search-panel,.search-highlight{animation:none!important}.search-trigger,.vocab-search-result{transition:none!important}}
+</style>
+
 </head>
 <body>
 
@@ -3948,6 +4014,8 @@ body:not(.light) .vocab-item{border-color:var(--entry-dark-line)!important;backg
     <h1><span>Vokabular</span></h1>
     <p class="subtitle">Vocabulary, idioms & word lists</p>
     <p class="desc">Expand your German vocabulary with curated lists categorized by parts of speech, word formations, and popular media.</p>
+
+
 </header>
 
 <div class="top-area">
@@ -3963,6 +4031,9 @@ body:not(.light) .vocab-item{border-color:var(--entry-dark-line)!important;backg
             <button class="pill" data-category="similar">Similar</button>
             <button class="pill" data-category="cinema">Cinema</button>
         </div>
+        <button class="search-trigger" id="searchTrigger" type="button" aria-label="Search vocabulary" title="Search vocabulary (Ctrl+K / ⌘K)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.2 4.2"></path></svg>
+        </button>
     </div>
 </div>
 
@@ -5490,7 +5561,14 @@ function escapeHtml(value) {
 }
 
 function setupThemeToggle() {
-    const savedTheme = localStorage.getItem('theme');
+    // Storage can be unavailable in private, sandboxed, or local-file contexts.
+    let savedTheme = null;
+    try {
+        savedTheme = window.localStorage.getItem('theme');
+    } catch (_) {
+        // Theme switching still works for this visit; only persistence is unavailable.
+    }
+
     if (savedTheme === 'light') {
         document.body.classList.add('light');
         themeToggle.textContent = '☾ Dunkel';
@@ -5500,7 +5578,11 @@ function setupThemeToggle() {
         document.body.classList.toggle('light');
         const isLight = document.body.classList.contains('light');
         themeToggle.textContent = isLight ? '☾ Dunkel' : '☀︎ Hell';
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        try {
+            window.localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        } catch (_) {
+            // Do not break the toggle when the browser blocks persistent storage.
+        }
     });
 }
 
@@ -8485,6 +8567,596 @@ body.light .verb-cinema-table .verb-perfekt {
   }
 }
 </style>
+
+
+<div class="vocab-search-overlay" id="vocabularySearchOverlay" hidden aria-hidden="true">
+    <div class="vocab-search-backdrop" data-vocab-search-close></div>
+    <section class="vocab-search-panel" role="dialog" aria-modal="true" aria-labelledby="vocabSearchDialogTitle">
+        <h2 id="vocabSearchDialogTitle" class="visually-hidden">Search vocabulary</h2>
+        <div class="vocab-search-input-wrap">
+            <svg class="vocab-search-input-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.2 4.2"></path></svg>
+            <label class="visually-hidden" for="vocabularySearchInput">Search German or English vocabulary</label>
+            <input id="vocabularySearchInput" type="search" placeholder="Search German or English…" autocomplete="off" spellcheck="false" aria-controls="vocabularySearchResults" aria-describedby="vocabSearchStatus">
+            <button class="vocab-search-close" type="button" data-vocab-search-close aria-label="Close search" title="Close search">×</button>
+        </div>
+        <div class="vocab-search-status" id="vocabSearchStatus" aria-live="polite">Search German words, English meanings, and example translations.</div>
+        <div class="vocab-search-results" id="vocabularySearchResults" role="listbox" aria-label="Vocabulary search results">
+            <div class="vocab-search-empty">Start typing to search across <strong>all vocabulary sections</strong>.</div>
+        </div>
+        <div class="vocab-search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> Navigate</span><span><kbd>Enter</kbd> Open entry</span><span><kbd>Esc</kbd> Close</span><span><kbd>Ctrl</kbd><kbd>K</kbd> Search</span></div>
+    </section>
+</div>
+
+<script id="vocabulary-global-search">
+(function(){
+  'use strict';
+
+  const trigger = document.getElementById('searchTrigger');
+  const overlay = document.getElementById('vocabularySearchOverlay');
+  const input = document.getElementById('vocabularySearchInput');
+  const resultsEl = document.getElementById('vocabularySearchResults');
+  const statusEl = document.getElementById('vocabSearchStatus');
+  const categoryPills = document.getElementById('categoryPills');
+  const topicButtons = document.getElementById('topicButtons');
+  const detail = document.getElementById('detail');
+  if (!trigger || !overlay || !input || !resultsEl || !statusEl || !detail) return;
+
+  const PAGE_SIZE = 18;
+  let index = null;
+  let allResults = [];
+  let visibleResults = [];
+  let activeIndex = -1;
+  let visibleLimit = PAGE_SIZE;
+  let debounceId = 0;
+  let priorOverflow = '';
+  let priorFocus = null;
+  const indexMap = new Map();
+
+  const clean = value => String(value == null ? '' : value).replace(/\s+/g, ' ').trim();
+  const escapeHtml = value => String(value == null ? '' : value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const baseNormal = value => String(value == null ? '' : value).toLocaleLowerCase('de-DE').replace(/ß/g, 'ss').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[’'`´]/g, '').replace(/[‐‑‒–—-]/g, ' ').replace(/&/g, ' and ').replace(/[^\p{L}\p{N}]+/gu, ' ').replace(/\s+/g, ' ').trim();
+  const altNormal = value => String(value == null ? '' : value).toLocaleLowerCase('de-DE').replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[’'`´]/g, '').replace(/[‐‑‒–—-]/g, ' ').replace(/&/g, ' and ').replace(/[^\p{L}\p{N}]+/gu, ' ').replace(/\s+/g, ' ').trim();
+  // Reverse common ASCII umlaut spellings too: fuer ↔ für, schoen ↔ schön, Maedchen ↔ Mädchen.
+  const reverseUmlautNormal = value => baseNormal(String(value == null ? '' : value).replace(/ae/gi, 'ä').replace(/oe/gi, 'ö').replace(/ue/gi, 'ü'));
+  const categoryLabels = {nouns:'Nouns',verbs:'Verbs',adjectives:'Adjectives',other:'Other',b1:'B1',komposita:'Komposita',endings:'Endings',similar:'Similar',cinema:'Cinema'};
+  const categoryLabel = key => categoryLabels[String(key || '').toLowerCase()] || clean(key) || 'Vocabulary';
+  const categoryPriority = key => ({nouns:0,verbs:0,adjectives:0,other:0,b1:1,komposita:2,endings:2,cinema:3,similar:4,imported:5})[String(key || '').toLowerCase()] ?? 6;
+  const makeField = value => ({base:baseNormal(value),alt:altNormal(value)});
+
+  function sourceFor(category, topic){
+    return [categoryLabel(category), clean(topic)].filter(Boolean).join(' · ');
+  }
+
+  function refreshEntry(entry){
+    entry.source = entry.sources.join(' · ');
+    entry.fields = {
+      german:makeField(entry.german), english:makeField(entry.english),
+      example:makeField(entry.example), translation:makeField(entry.translation),
+      topic:makeField(entry.topic), source:makeField(entry.source),
+      extra:makeField(entry.extraSearchText)
+    };
+  }
+
+  function addEntry(german, english, example, translation, category, topic, extraSearchText){
+    german = clean(german); english = clean(english); example = clean(example); translation = clean(translation);
+    extraSearchText = clean(extraSearchText);
+    if (!german || (!english && !example && !translation)) return;
+    if (german.length > 260 || english.length > 360) return;
+    if (/^(word|meaning|example|example sentence|compound word|infinitiv|partizip ii|perfekt|verb forms|audio|translation|der|die|das)$/i.test(german)) return;
+    if (/^\d{1,4}$/.test(german)) return;
+
+    const germanKey = baseNormal(german);
+    const englishKey = baseNormal(english);
+    const key = germanKey + '\u001f' + englishKey;
+    const source = sourceFor(category, topic);
+    const previous = indexMap.get(key);
+    if (previous){
+      if (!previous.example && example) previous.example = example;
+      if (!previous.translation && translation) previous.translation = translation;
+      // If the same word exists in several lists, opening it should prefer a core vocabulary section.
+      if (categoryPriority(category) < categoryPriority(previous.category)) {
+        previous.category = String(category || 'other');
+        previous.topic = clean(topic);
+      }
+      if (source && !previous.sources.includes(source) && previous.sources.length < 6) previous.sources.push(source);
+      previous.sources.sort((a, b) => {
+        const aKey = clean(a).split(' · ')[0].toLowerCase();
+        const bKey = clean(b).split(' · ')[0].toLowerCase();
+        return categoryPriority(aKey) - categoryPriority(bKey) || a.localeCompare(b, 'de');
+      });
+      if (extraSearchText) previous.extraSearchText = clean([previous.extraSearchText, extraSearchText].filter(Boolean).join(' '));
+      refreshEntry(previous);
+      return;
+    }
+
+    const entry = {
+      german, english, example, translation,
+      category:String(category || 'other'), topic:clean(topic),
+      sources:source ? [source] : [], extraSearchText
+    };
+    refreshEntry(entry);
+    indexMap.set(key, entry);
+  }
+
+  function textWithout(node, selectors){
+    if (!node) return '';
+    const clone = node.cloneNode(true);
+    const removals = ['button','svg','script','style',...(selectors || [])].join(',');
+    clone.querySelectorAll(removals).forEach(el => el.remove());
+    return clean(clone.textContent);
+  }
+
+  function textBySelectors(node, selectors){
+    if (!node) return '';
+    return clean(Array.from(node.querySelectorAll(selectors)).map(el => el.textContent).join(' '));
+  }
+
+  function ingestHtml(html, category, topic){
+    if (!html) return;
+    const root = document.createElement('div');
+    root.innerHTML = html;
+    root.querySelectorAll('.vocab-item').forEach(card => {
+      addEntry(card.querySelector('.vocab-de')?.textContent, card.querySelector('.vocab-en')?.textContent, '', '', category, topic);
+    });
+    root.querySelectorAll('.comparison-item').forEach(card => {
+      addEntry(card.querySelector('strong')?.textContent, card.querySelector('span')?.textContent, '', '', category, topic);
+    });
+    root.querySelectorAll('.verb-rowbox').forEach(row => {
+      const forms = textWithout(row.querySelector('.verb-forms'), ['.verb-number']);
+      const meaning = textWithout(row.querySelector('.verb-meaning'));
+      const example = textWithout(row.querySelector('.verb-example-de'));
+      const translation = textWithout(row.querySelector('.verb-example-en'));
+      addEntry(forms, meaning, example, translation, category, topic);
+    });
+    root.querySelectorAll('table tbody tr').forEach(row => {
+      const cells = Array.from(row.querySelectorAll(':scope > td'));
+      if (cells.length < 2) return;
+      const word = textWithout(cells[0], ['.similar-no','.cinema-no','.verb-number','.ending-root','.ending-en','.ending-translation']);
+      const meaning = textWithout(cells[1], ['.similar-no','.cinema-no']);
+      const exampleCell = cells[2] || null;
+      const example = textWithout(exampleCell, ['.similar-example-translation','.cinema-translation','.ending-translation','.bank-translation','.b1-translation','.practice-table-translation','.komposita-example-en','.verb-example-en']);
+      const translation = textBySelectors(exampleCell, '.similar-example-translation,.cinema-translation,.ending-translation,.bank-translation,.b1-translation,.practice-table-translation,.komposita-example-en,.verb-example-en');
+      addEntry(word, meaning, example, translation, category, topic);
+    });
+  }
+
+  function ingestStandardRows(rows, category, topic){
+    if (!Array.isArray(rows)) return;
+    rows.forEach(row => {
+      if (Array.isArray(row)) addEntry(row[0], row[1], row[2], row[3], category, topic);
+      else if (row && typeof row === 'object') addEntry(row.german || row.de || row.word, row.english || row.en || row.meaning || row.info, row.sentence || row.example, row.translation || row.explanation, category, topic, [row.info,row.letter].filter(Boolean).join(' '));
+    });
+  }
+
+  function ingestTree(node, category, topic, depth){
+    if ((depth || 0) > 14 || node == null) return;
+    if (Array.isArray(node)){
+      if (node.length >= 2 && typeof node[0] === 'string' && typeof node[1] === 'string' && !Array.isArray(node[0])) addEntry(node[0], node[1], node[2], node[3], category, topic);
+      else node.forEach(child => ingestTree(child, category, topic, (depth || 0) + 1));
+      return;
+    }
+    if (typeof node !== 'object') return;
+    Object.entries(node).forEach(([key, value]) => {
+      if ((depth || 0) === 0 && ['nouns','verbs','adjectives','other','b1','komposita','endings','similar','cinema'].includes(key.toLowerCase())) ingestTree(value, key, topic || 'Imported vocabulary', 1);
+      else ingestTree(value, category, topic ? topic + ' · ' + key : key, (depth || 0) + 1);
+    });
+  }
+
+  function safely(label, work){
+    try { work(); }
+    catch(error){ console.warn('[vocabulary search] Could not index ' + label + ':', error); }
+  }
+
+  function similarTopic(row){
+    const type = row.type || (row.typeDE === 'Nomen' ? 'Noun' : 'Adjective');
+    const isNoun = type === 'Noun';
+    const cat = String(row.category || '');
+    let level = 'Similar';
+    if (cat === 'Exact same spelling' || cat.startsWith('31 —')) level = 'Exact';
+    else if (cat === 'Recognisable') level = 'Recognisable';
+    return (isNoun ? 'Nouns' : 'Adjectives') + ' · ' + level;
+  }
+
+  function buildIndex(){
+    if (index) return index;
+    safely('VOCAB_DATA', () => {
+      if (typeof VOCAB_DATA === 'undefined' || !VOCAB_DATA) return;
+      Object.entries(VOCAB_DATA).forEach(([category, group]) => {
+        (group?.topics || []).forEach(topic => safely('topic ' + (topic?.title || category), () => ingestHtml(topic?.html || '', category, topic?.title || 'Vocabulary')));
+      });
+    });
+    safely('SIMILAR_DATA', () => {
+      if (typeof SIMILAR_DATA === 'undefined' || !Array.isArray(SIMILAR_DATA)) return;
+      SIMILAR_DATA.forEach(row => { if (row) addEntry(row.german, row.english, row.sentence, row.explanation, 'similar', similarTopic(row), row.category); });
+    });
+    safely('CINEMA_DATA', () => {
+      if (typeof CINEMA_DATA === 'undefined' || !Array.isArray(CINEMA_DATA)) return;
+      CINEMA_DATA.forEach(row => { if (row) addEntry(row.german, row.english, row.sentence, row.translation, 'cinema', row.sub || row.category, row.opposite || ''); });
+    });
+    safely('ENDINGS_DATA', () => {
+      if (typeof ENDINGS_DATA === 'undefined' || !ENDINGS_DATA) return;
+      Object.entries(ENDINGS_DATA).forEach(([group, set]) => (set?.rows || []).forEach(row => { if (row) addEntry(row[1], row[2], row[3], row[4], 'endings', group, row[0]); }));
+    });
+    safely('KOMPOSITA_DATA', () => {
+      if (typeof KOMPOSITA_DATA === 'undefined' || !KOMPOSITA_DATA) return;
+      Object.entries(KOMPOSITA_DATA).forEach(([group, rows]) => (rows || []).forEach(row => {
+        if (!row) return;
+        const translation = typeof KOMPOSITA_TRANSLATIONS !== 'undefined' ? (KOMPOSITA_TRANSLATIONS[row[3]] || '') : '';
+        addEntry(row[0], row[2], row[3], translation, 'komposita', group, row[1]);
+      }));
+    });
+    safely('B1_DATA', () => {
+      if (typeof B1_DATA === 'undefined' || !B1_DATA?.topics) return;
+      B1_DATA.topics.forEach(topic => { if (topic) ingestStandardRows(topic.rows, 'b1', topic.title); });
+    });
+    safely('GOETHE_A1A2', () => {
+      if (typeof GOETHE_A1A2 === 'undefined' || !GOETHE_A1A2) return;
+      Object.entries(GOETHE_A1A2).forEach(([category, topics]) => Object.entries(topics || {}).forEach(([topic, rows]) => ingestStandardRows(rows, category, topic)));
+    });
+    safely('IMPORTED_VOCAB', () => { if (typeof IMPORTED_VOCAB !== 'undefined' && IMPORTED_VOCAB) ingestTree(IMPORTED_VOCAB, 'other', 'Imported vocabulary', 0); });
+    safely('BASIC_NOUN_ROWS', () => {
+      if (typeof BASIC_NOUN_ROWS === 'undefined' || !BASIC_NOUN_ROWS) return;
+      Object.entries(BASIC_NOUN_ROWS).forEach(([topic, rows]) => ingestStandardRows(rows, 'nouns', topic));
+    });
+    safely('SOURCE_PRONOUN_CONNECTOR_ROWS', () => { if (typeof SOURCE_PRONOUN_CONNECTOR_ROWS !== 'undefined') ingestStandardRows(SOURCE_PRONOUN_CONNECTOR_ROWS, 'nouns', 'Pronouns & Connectors'); });
+    safely('SOURCE_ADVERB_OTHER_ROWS', () => { if (typeof SOURCE_ADVERB_OTHER_ROWS !== 'undefined') ingestStandardRows(SOURCE_ADVERB_OTHER_ROWS, 'other', 'Adverbs & Other Words'); });
+    safely('VERB_PATTERN_TOPICS', () => {
+      if (typeof VERB_PATTERN_TOPICS === 'undefined' || !Array.isArray(VERB_PATTERN_TOPICS)) return;
+      VERB_PATTERN_TOPICS.forEach(topic => { if (topic) safely('verb topic ' + topic.title, () => ingestHtml(topic.html || '', 'verbs', topic.title || 'Verb patterns')); });
+    });
+    index = Array.from(indexMap.values());
+    return index;
+  }
+
+  function queryTokenObjects(query){
+    const bases = baseNormal(query).split(' ').filter(Boolean);
+    const alts = altNormal(query).split(' ').filter(Boolean);
+    const reversed = reverseUmlautNormal(query).split(' ').filter(Boolean);
+    return bases.map((base, i) => ({forms:Array.from(new Set([base, alts[i] || base, reversed[i] || base].filter(Boolean)))}));
+  }
+
+  function wordTier(word, token, allowInfix, allowFuzzy){
+    let best = Infinity;
+    for (const form of token.forms){
+      if (!form) continue;
+      if (word === form) best = Math.min(best, 0);
+      else if (word.startsWith(form)) best = Math.min(best, 1);
+      else if (allowInfix && form.length >= 4 && word.includes(form)) best = Math.min(best, 2);
+      else if (allowFuzzy && form.length >= 5 && word.length >= 5 && editDistanceAtMostOne(word, form)) best = Math.min(best, 3);
+    }
+    return best;
+  }
+
+  function editDistanceAtMostOne(a, b){
+    if (a === b) return true;
+    if (Math.abs(a.length - b.length) > 1) return false;
+    let i = 0, j = 0, edits = 0;
+    while (i < a.length && j < b.length){
+      if (a[i] === b[j]) { i++; j++; continue; }
+      if (++edits > 1) return false;
+      if (a.length > b.length) i++;
+      else if (b.length > a.length) j++;
+      else { i++; j++; }
+    }
+    if (i < a.length || j < b.length) edits++;
+    return edits <= 1;
+  }
+
+  function fieldTier(field, tokens, allowInfix, allowFuzzy){
+    if (!field) return Infinity;
+    const wordSet = new Set((field.base + ' ' + field.alt).split(/\s+/).filter(Boolean));
+    if (!wordSet.size) return Infinity;
+    let total = 0;
+    for (const token of tokens){
+      let best = Infinity;
+      wordSet.forEach(word => { best = Math.min(best, wordTier(word, token, allowInfix, allowFuzzy)); });
+      if (!Number.isFinite(best)) return Infinity;
+      total += best;
+    }
+    return total;
+  }
+
+  function crossFieldTier(fields, tokens, allowInfix, allowFuzzy){
+    let total = 0;
+    for (const token of tokens){
+      let best = Infinity;
+      fields.forEach(field => {
+        if (!field) return;
+        const words = new Set((field.base + ' ' + field.alt).split(/\s+/).filter(Boolean));
+        words.forEach(word => { best = Math.min(best, wordTier(word, token, allowInfix, allowFuzzy)); });
+      });
+      if (!Number.isFinite(best)) return Infinity;
+      total += best;
+    }
+    return total;
+  }
+
+  function normalizedPhraseMatches(field, queryForms){
+    if (!field) return false;
+    return queryForms.some(q => q && (field.base === q || field.alt === q));
+  }
+
+  function scoreEntry(entry, rawQuery, tokens, allowInfix, allowFuzzy, directOnly){
+    const qForms = Array.from(new Set([baseNormal(rawQuery), altNormal(rawQuery)].filter(Boolean)));
+    const f = entry.fields;
+    if (normalizedPhraseMatches(f.german, qForms)) return 0;
+    if (normalizedPhraseMatches(f.english, qForms)) return 1;
+
+    // Joined compounds let "email" find "E-Mail" without making every spaced phrase equivalent.
+    if (tokens.length === 1 && qForms.some(q => q.length >= 4)){
+      const compactQ = qForms.map(q => q.replace(/\s/g, ''));
+      const germanCompact = [f.german.base, f.german.alt].map(q => q.replace(/\s/g, ''));
+      const englishCompact = [f.english.base, f.english.alt].map(q => q.replace(/\s/g, ''));
+      if (compactQ.some(q => germanCompact.includes(q))) return 2;
+      if (compactQ.some(q => englishCompact.includes(q))) return 3;
+    }
+
+    const deTier = fieldTier(f.german, tokens, allowInfix, allowFuzzy);
+    if (Number.isFinite(deTier)) return 10 + deTier;
+    const enTier = fieldTier(f.english, tokens, allowInfix, allowFuzzy);
+    if (Number.isFinite(enTier)) return 20 + enTier;
+    const primaryTier = crossFieldTier([f.german, f.english], tokens, allowInfix, allowFuzzy);
+    if (Number.isFinite(primaryTier)) return 30 + primaryTier;
+
+    // Short function words (e.g. "für", "in", "an") are everywhere in example sentences.
+    // For a short single-word query, only show term/meaning/metadata matches when available.
+    if (directOnly || allowFuzzy){
+      const extraTier = fieldTier(f.extra, tokens, allowInfix, allowFuzzy);
+      if (Number.isFinite(extraTier)) return 35 + extraTier;
+      const metaTier = crossFieldTier([f.topic, f.source], tokens, allowInfix, allowFuzzy);
+      if (Number.isFinite(metaTier)) return 70 + metaTier;
+      return Infinity;
+    }
+
+    const exampleTier = fieldTier(f.example, tokens, allowInfix, allowFuzzy);
+    if (Number.isFinite(exampleTier)) return 40 + exampleTier;
+    const translationTier = fieldTier(f.translation, tokens, allowInfix, allowFuzzy);
+    if (Number.isFinite(translationTier)) return 50 + translationTier;
+    const sentenceTier = crossFieldTier([f.example, f.translation], tokens, allowInfix, allowFuzzy);
+    if (Number.isFinite(sentenceTier)) return 60 + sentenceTier;
+    const metaTier = crossFieldTier([f.topic, f.source, f.extra], tokens, allowInfix, allowFuzzy);
+    if (Number.isFinite(metaTier)) return 70 + metaTier;
+    return Infinity;
+  }
+
+  function search(query){
+    const tokens = queryTokenObjects(query);
+    if (!tokens.length) return {results:[], fuzzy:false, relaxed:false};
+    const all = buildIndex();
+    const shortSingleWord = tokens.length === 1 && Math.min(...tokens[0].forms.map(form => form.length)) <= 3;
+    const run = (allowInfix, allowFuzzy, directOnly=false) => all.map((entry, originalOrder) => ({entry, originalOrder, score:scoreEntry(entry, query, tokens, allowInfix, allowFuzzy, directOnly)})).filter(item => Number.isFinite(item.score));
+    let ranked = run(false, false, shortSingleWord);
+    let relaxed = false;
+    let fuzzy = false;
+    if (!ranked.length){ ranked = run(true, false, shortSingleWord); relaxed = ranked.length > 0; }
+    if (!ranked.length && tokens.length <= 4){ ranked = run(false, true, false); fuzzy = ranked.length > 0; }
+    ranked.sort((a,b) => a.score - b.score || a.entry.german.localeCompare(b.entry.german, 'de') || a.originalOrder - b.originalOrder);
+    return {results:ranked.map(item => item.entry), fuzzy, relaxed};
+  }
+
+  function escapeRegExp(value){ return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  function highlightText(value, query){
+    const text = String(value || '');
+    const terms = clean(query).split(/\s+/).filter(term => term.length >= 2).sort((a,b) => b.length - a.length);
+    if (!terms.length) return escapeHtml(text);
+    const pattern = new RegExp('(' + terms.map(escapeRegExp).join('|') + ')', 'ig');
+    return text.split(pattern).map(part => terms.some(term => part.toLocaleLowerCase('de-DE') === term.toLocaleLowerCase('de-DE')) ? '<mark>' + escapeHtml(part) + '</mark>' : escapeHtml(part)).join('');
+  }
+
+  function emptyResults(message){
+    resultsEl.innerHTML = '<div class="vocab-search-empty">' + message + '</div>';
+  }
+
+  function renderResults(query, desiredActive){
+    query = clean(query);
+    if (!query){
+      allResults = []; visibleResults = []; activeIndex = -1;
+      statusEl.textContent = 'Search German words, English meanings, and example translations.';
+      emptyResults('Start typing to search across <strong>all vocabulary sections</strong>.');
+      return;
+    }
+    const response = search(query);
+    allResults = response.results;
+    visibleLimit = Math.max(PAGE_SIZE, visibleLimit);
+    visibleResults = allResults.slice(0, visibleLimit);
+    activeIndex = visibleResults.length ? Math.min(Math.max(Number.isInteger(desiredActive) ? desiredActive : 0, 0), visibleResults.length - 1) : -1;
+    if (response.fuzzy) statusEl.textContent = allResults.length + ' close spelling ' + (allResults.length === 1 ? 'match' : 'matches') + ' · no exact match found';
+    else if (response.relaxed) statusEl.textContent = allResults.length + ' partial ' + (allResults.length === 1 ? 'match' : 'matches') + ' · matching inside words';
+    else statusEl.textContent = allResults.length.toLocaleString() + ' ' + (allResults.length === 1 ? 'match' : 'matches') + ' · German, English, and examples';
+
+    if (!allResults.length){ emptyResults('No vocabulary found for <strong>“' + escapeHtml(query) + '”</strong>. Try a shorter word or check the spelling.'); return; }
+
+    const html = visibleResults.map((entry, i) => {
+      const selected = i === activeIndex ? ' is-active' : '';
+      const label = [entry.german, entry.english, entry.source, entry.example].filter(Boolean).join(' · ');
+      return '<button type="button" role="option" aria-selected="' + (i === activeIndex ? 'true' : 'false') + '" class="vocab-search-result' + selected + '" data-result-index="' + i + '">' +
+        '<span class="vocab-search-result-head"><span class="vocab-search-result-de">' + highlightText(entry.german, query) + '</span>' +
+        (entry.english ? '<span class="vocab-search-result-en">' + highlightText(entry.english, query) + '</span>' : '') + '</span>' +
+        (entry.example ? '<span class="vocab-search-result-sentence">' + highlightText(entry.example, query) + '</span>' : '') +
+        (entry.translation ? '<span class="vocab-search-result-translation">' + highlightText(entry.translation, query) + '</span>' : '') +
+        '<span class="vocab-search-result-meta" title="' + escapeHtml(entry.sources.join(' · ')) + '">' + escapeHtml(entry.sources[0] || 'Vocabulary') + (entry.sources.length > 1 ? ' · +' + (entry.sources.length - 1) + ' sections' : '') + '</span>' +
+        '</button>';
+    }).join('');
+    const more = allResults.length > visibleResults.length ? '<div class="vocab-search-more-wrap"><button type="button" class="vocab-search-more" id="vocabSearchMore">Show more · ' + visibleResults.length.toLocaleString() + ' of ' + allResults.length.toLocaleString() + '</button></div>' : '';
+    resultsEl.innerHTML = html + more;
+    const active = resultsEl.querySelector('.vocab-search-result.is-active');
+    if (active && desiredActive != null) active.scrollIntoView({block:'nearest'});
+  }
+
+  function setActive(nextIndex){
+    if (!visibleResults.length) return;
+    if (nextIndex >= visibleResults.length && visibleResults.length < allResults.length){
+      const nextLimit = Math.min(allResults.length, visibleLimit + PAGE_SIZE);
+      const wanted = nextIndex;
+      visibleLimit = nextLimit;
+      renderResults(input.value, wanted);
+      return;
+    }
+    if (nextIndex < 0) nextIndex = visibleResults.length - 1;
+    else if (nextIndex >= visibleResults.length) nextIndex = 0;
+    activeIndex = nextIndex;
+    resultsEl.querySelectorAll('.vocab-search-result').forEach((node, i) => {
+      const isActive = i === activeIndex;
+      node.classList.toggle('is-active', isActive);
+      node.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    const active = resultsEl.querySelector('.vocab-search-result.is-active');
+    if (active) active.scrollIntoView({block:'nearest'});
+  }
+
+  function openSearch(){
+    if (!overlay.hidden){ input.focus(); return; }
+    priorFocus = document.activeElement;
+    priorOverflow = document.body.style.overflow;
+    overlay.hidden = false;
+    overlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    window.setTimeout(() => input.focus(), 20);
+  }
+
+  function closeSearch(restoreFocus=true){
+    if (overlay.hidden) return;
+    overlay.hidden = true;
+    overlay.setAttribute('aria-hidden','true');
+    document.body.style.overflow = priorOverflow;
+    window.clearTimeout(debounceId);
+    input.value = '';
+    visibleLimit = PAGE_SIZE;
+    allResults = []; visibleResults = []; activeIndex = -1;
+    statusEl.textContent = 'Search German words, English meanings, and example translations.';
+    emptyResults('Start typing to search across <strong>all vocabulary sections</strong>.');
+    if (restoreFocus){
+      const destination = priorFocus && document.contains(priorFocus) ? priorFocus : trigger;
+      try { destination.focus({preventScroll:true}); } catch (_) { destination.focus(); }
+    }
+  }
+
+  function normalizeLabel(value){ return baseNormal(value).replace(/\s+/g,' ').trim(); }
+
+  function activateCategory(category){
+    if (!categoryPills) return null;
+    const key = String(category || '').toLowerCase();
+    const pill = Array.from(categoryPills.querySelectorAll('.pill[data-category]')).find(btn => btn.dataset.category.toLowerCase() === key);
+    if (pill){ pill.click(); return pill; }
+    const fallbacks = {imported:'other',connectors:'other',nounopposites:'nouns',verbopposites:'verbs',adjopposites:'adjectives',bonus:'other'};
+    const fallback = fallbacks[key];
+    const fallbackPill = fallback ? Array.from(categoryPills.querySelectorAll('.pill[data-category]')).find(btn => btn.dataset.category === fallback) : null;
+    if (fallbackPill) fallbackPill.click();
+    return fallbackPill;
+  }
+
+  function locateTopic(topic){
+    if (!topicButtons || !clean(topic)) return false;
+    const buttons = Array.from(topicButtons.querySelectorAll('.topic-btn'));
+    const wanted = normalizeLabel(topic);
+    let target = buttons.find(btn => normalizeLabel(btn.textContent) === wanted);
+    if (!target && wanted.length >= 5) target = buttons.find(btn => normalizeLabel(btn.textContent).includes(wanted) || wanted.includes(normalizeLabel(btn.textContent)));
+    if (target){ target.click(); return true; }
+    return false;
+  }
+
+  function scrollToEntry(entry){
+    if (!detail) return;
+    const targetDe = baseNormal(entry.german);
+    const targetEn = baseNormal(entry.english);
+    const selectors = 'table tbody tr, .vocab-item, .comparison-item, .verb-rowbox, .other-guide-card, .listening-card';
+    const rows = Array.from(detail.querySelectorAll(selectors));
+    let match = rows.find(row => {
+      const first = row.querySelector('td:first-child,.vocab-de,strong,.verb-forms');
+      return first && baseNormal(first.textContent) === targetDe;
+    });
+    if (!match) match = rows.find(row => {
+      const first = row.querySelector('td:first-child,.vocab-de,strong,.verb-forms');
+      if (!first) return false;
+      const value = baseNormal(first.textContent);
+      return (targetDe && value.includes(targetDe)) || (targetEn && baseNormal(row.textContent).includes(targetEn));
+    });
+    if (match){
+      detail.querySelectorAll('.search-highlight').forEach(node => node.classList.remove('search-highlight'));
+      match.classList.add('search-highlight');
+      try { match.scrollIntoView({behavior:'smooth',block:'center'}); } catch (_) { match.scrollIntoView(); }
+      window.setTimeout(() => match.classList.remove('search-highlight'), 2700);
+    } else {
+      try { detail.scrollIntoView({behavior:'smooth',block:'start'}); } catch (_) { detail.scrollIntoView(); }
+    }
+  }
+
+  function selectEntry(entry){
+    closeSearch(false);
+    const pill = activateCategory(entry.category);
+    if (!pill){
+      activateCategory('other');
+      window.setTimeout(() => scrollToEntry(entry), 250);
+      return;
+    }
+    window.setTimeout(() => {
+      const topicClicked = locateTopic(entry.topic);
+      // Category rendering is synchronous; topic HTML can finish its own short render delay.
+      window.setTimeout(() => scrollToEntry(entry), topicClicked ? 220 : 180);
+    }, 180);
+    trigger.focus({preventScroll:true});
+  }
+
+  trigger.addEventListener('click', openSearch);
+  overlay.addEventListener('click', event => {
+    if (event.target.closest('[data-vocab-search-close]')) closeSearch();
+  });
+
+  input.addEventListener('input', () => {
+    window.clearTimeout(debounceId);
+    visibleLimit = PAGE_SIZE;
+    debounceId = window.setTimeout(() => renderResults(input.value, 0), 45);
+  });
+
+  resultsEl.addEventListener('click', event => {
+    const moreButton = event.target.closest('#vocabSearchMore');
+    if (moreButton){
+      const oldActive = Math.max(0, activeIndex);
+      visibleLimit = Math.min(allResults.length, visibleLimit + PAGE_SIZE);
+      renderResults(input.value, oldActive);
+      return;
+    }
+    const result = event.target.closest('[data-result-index]');
+    if (result){
+      const entry = visibleResults[Number(result.dataset.resultIndex)];
+      if (entry) selectEntry(entry);
+    }
+  });
+
+  document.addEventListener('keydown', event => {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k'){
+      event.preventDefault();
+      if (overlay.hidden) openSearch(); else closeSearch();
+      return;
+    }
+    if (overlay.hidden) return;
+    if (event.key === 'Escape'){
+      event.preventDefault();
+      closeSearch();
+    } else if (event.target === input && event.key === 'ArrowDown'){
+      event.preventDefault();
+      setActive(activeIndex + 1);
+    } else if (event.target === input && event.key === 'ArrowUp'){
+      event.preventDefault();
+      setActive(activeIndex - 1);
+    } else if (event.target === input && event.key === 'Enter'){
+      if (activeIndex >= 0 && visibleResults[activeIndex]){
+        event.preventDefault();
+        selectEntry(visibleResults[activeIndex]);
+      }
+    } else if (event.key === 'Tab'){
+      const focusables = Array.from(overlay.querySelectorAll('input,button:not([disabled])')).filter(el => el.offsetParent !== null);
+      if (!focusables.length) return;
+      const first = focusables[0], last = focusables[focusables.length - 1];
+      if (event.shiftKey && document.activeElement === first){ event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last){ event.preventDefault(); first.focus(); }
+    }
+  });
+
+  // Lazy indexing avoids slowing the initial page render. The index is cached after first use.
+  window.__vocabSearch = {buildIndex, search, open:openSearch, close:closeSearch};
+})();
+</script>
 
 </body>
 </html>
